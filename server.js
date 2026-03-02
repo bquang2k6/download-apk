@@ -215,7 +215,7 @@ app.get('/download/:id', async (req, res) => {
 
     const meta = await drive.files.get({
       fileId,
-      fields: 'name, mimeType'
+      fields: 'name, mimeType, size'
     });
 
     const driveRes = await drive.files.get(
@@ -223,9 +223,9 @@ app.get('/download/:id', async (req, res) => {
       { responseType: 'stream' }
     );
 
-    // 🔥 QUAN TRỌNG NHẤT CHO MOBILE
     res.setHeader('Content-Type', 'application/vnd.android.package-archive');
     res.setHeader('Content-Disposition', `attachment; filename="${meta.data.name}"`);
+    res.setHeader('Content-Length', meta.data.size);
     res.setHeader('X-Content-Type-Options', 'nosniff');
 
     driveRes.data.pipe(res);
