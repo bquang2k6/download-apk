@@ -223,14 +223,10 @@ app.get('/download/:id', async (req, res) => {
       { responseType: 'stream' }
     );
 
-    // ✅ Set đúng content type
-    res.setHeader('Content-Type', meta.data.mimeType);
-
-    // ✅ Set filename chuẩn (không cần encodeURIComponent)
-    res.setHeader(
-      'Content-Disposition',
-      `attachment; filename="${meta.data.name}"`
-    );
+    // 🔥 QUAN TRỌNG NHẤT CHO MOBILE
+    res.setHeader('Content-Type', 'application/vnd.android.package-archive');
+    res.setHeader('Content-Disposition', `attachment; filename="${meta.data.name}"`);
+    res.setHeader('X-Content-Type-Options', 'nosniff');
 
     driveRes.data.pipe(res);
 
