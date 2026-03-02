@@ -204,6 +204,36 @@ app.get('/files', async (req, res) => {
 
 // ==== API cũ: Download file ====
 // ==== 🔒 PUBLIC DOWNLOAD ONLY ====
+// app.get('/download/:id', async (req, res) => {
+//   try {
+//     const fileId = req.params.id;
+
+//     const allowed = await isInsideFixedFolder(fileId);
+//     if (!allowed) {
+//       return res.status(403).send('Không có quyền tải file này');
+//     }
+
+//     const meta = await drive.files.get({
+//       fileId,
+//       fields: 'name, mimeType, size'
+//     });
+
+//     const driveRes = await drive.files.get(
+//       { fileId, alt: 'media' },
+//       { responseType: 'stream' }
+//     );
+
+//     res.setHeader('Content-Type', 'application/vnd.android.package-archive');
+//     res.setHeader('Content-Disposition', `attachment; filename="${meta.data.name}"`);
+//     res.setHeader('Content-Length', meta.data.size);
+//     res.setHeader('X-Content-Type-Options', 'nosniff');
+
+//     driveRes.data.pipe(res);
+
+//   } catch (err) {
+//     res.status(404).send('Không tìm thấy file');
+//   }
+// });
 app.get('/download/:id', async (req, res) => {
   try {
     const fileId = req.params.id;
@@ -213,23 +243,9 @@ app.get('/download/:id', async (req, res) => {
       return res.status(403).send('Không có quyền tải file này');
     }
 
-    const meta = await drive.files.get({
-      fileId,
-      fields: 'name, mimeType, size'
-    });
+    const shareLink = await getOrCreateShareLink(fileId);
 
-    const driveRes = await drive.files.get(
-      { fileId, alt: 'media' },
-      { responseType: 'stream' }
-    );
-
-    res.setHeader('Content-Type', 'application/vnd.android.package-archive');
-    res.setHeader('Content-Disposition', `attachment; filename="${meta.data.name}"`);
-    res.setHeader('Content-Length', meta.data.size);
-    res.setHeader('X-Content-Type-Options', 'nosniff');
-
-    driveRes.data.pipe(res);
-
+    return res.redirect(shareLink); // 🔥 redirect thay vì stream
   } catch (err) {
     res.status(404).send('Không tìm thấy file');
   }
