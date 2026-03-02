@@ -215,7 +215,7 @@ app.get('/download/:id', async (req, res) => {
 
     const meta = await drive.files.get({
       fileId,
-      fields: 'name'
+      fields: 'name, mimeType'
     });
 
     const driveRes = await drive.files.get(
@@ -223,9 +223,13 @@ app.get('/download/:id', async (req, res) => {
       { responseType: 'stream' }
     );
 
+    // ✅ Set đúng content type
+    res.setHeader('Content-Type', meta.data.mimeType);
+
+    // ✅ Set filename chuẩn (không cần encodeURIComponent)
     res.setHeader(
       'Content-Disposition',
-      `attachment; filename="${encodeURIComponent(meta.data.name)}"`
+      `attachment; filename="${meta.data.name}"`
     );
 
     driveRes.data.pipe(res);
