@@ -235,6 +235,18 @@
       background: #e8f0fe;
     }
 
+    .download-count-badge {
+      font-size: 12px;
+      color: #5f6368;
+      background: #f1f3f4;
+      padding: 4px 8px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-right: 8px;
+    }
+
     /* Mobile Filter Tabs */
     .mobile-filter-bar {
       display: none;
@@ -379,6 +391,18 @@
     .mfi-action:active {
       background: #e8f0fe;
       color: #1a73e8;
+    }
+
+    .mobile-download-count {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: #1a73e8;
+      background: #e8f0fe;
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-size: 11px;
+      margin-left: 8px;
     }
 
     /* Icon bg by type */
@@ -846,9 +870,10 @@
           <td class="col-time">${f.modifiedTime ? new Date(f.modifiedTime).toLocaleString('vi-VN') : ''}</td>
           <td class="col-size">${f.size ? formatSize(f.size) : ''}</td>
           <td>
-            <div class="action-group">
+            <div class="action-group" style="align-items: center;">
+              ${!f.isFolder && f.downloadCount > 0 ? `<span class="download-count-badge" title="Số lượt tải"><span class="mdi mdi-download-outline"></span> ${f.downloadCount}</span>` : ''}
               ${!f.isFolder ? `
-                <a class="btn-action btn-download mdi mdi-download" title="Tải về" href="/download/${f.id}" download></a>
+                <a class="btn-action btn-download mdi mdi-download" title="Tải về" href="${f.downloadUrl}" download></a>
               ` : ''}
             </div>
           </td>
@@ -868,11 +893,14 @@
             ${getFileTypeIcon(f)}
             <div class="mobile-file-name">${safeName}</div>
           </div>
-          <div class="mobile-file-meta">${meta}</div>
+          <div class="mobile-file-meta">
+            ${meta}
+            ${!f.isFolder && f.downloadCount > 0 ? `<span class="mobile-download-count"><span class="mdi mdi-download-outline"></span> ${f.downloadCount}</span>` : ''}
+          </div>
           <div class="mobile-file-actions">
             ${f.isFolder
           ? `<button class="btn-icon" onclick="openFolder('${f.id}')"><span class="mdi mdi-folder-open"></span> Mở</button>`
-          : `<a class="btn-icon" href="/download/${f.id}" download><span class="mdi mdi-download"></span> Tải về</a>`
+          : `<a class="btn-icon" href="${f.downloadUrl}" download><span class="mdi mdi-download"></span> Tải về</a>`
         }
           </div>
         </div>
@@ -974,9 +1002,10 @@
           <td class="col-time">${f.modifiedTime ? new Date(f.modifiedTime).toLocaleString('vi-VN') : ''}</td>
           <td class="col-size">${f.size ? formatSize(f.size) : ''}</td>
           <td>
-            <div class="action-group">
+            <div class="action-group" style="align-items: center;">
+              ${!f.isFolder && f.downloadCount > 0 ? `<span class="download-count-badge" title="Số lượt tải"><span class="mdi mdi-download-outline"></span> ${f.downloadCount}</span>` : ''}
               ${!f.isFolder ? `
-                <a class="btn-action btn-download mdi mdi-download" title="Tải về" href="/download/${f.id}" download></a>
+                <a class="btn-action btn-download mdi mdi-download" title="Tải về" href="${f.downloadUrl}" download></a>
               ` : ''}
             </div>
           </td>
@@ -1030,7 +1059,7 @@
         ? `<button class="mfi-action" onclick="openFolderWithName('${f.id}','${safeJsName}')" title="Mở">
              <span class="mdi mdi-chevron-right"></span>
            </button>`
-        : `<a class="mfi-action" href="/download/${f.id}" download title="Tải về">
+        : `<a class="mfi-action" href="${f.downloadUrl}" download title="Tải về">
              <span class="mdi mdi-download"></span>
            </a>`;
 
@@ -1039,7 +1068,10 @@
           <div class="mfi-icon ${iconClass}">${iconHtml}</div>
           <div class="mfi-info">
             <div class="mfi-name">${safeName}</div>
-            <div class="mfi-meta">${getFileLabel(f)}</div>
+            <div class="mfi-meta">
+              ${getFileLabel(f)}
+              ${!f.isFolder && f.downloadCount > 0 ? `<span class="mobile-download-count"><span class="mdi mdi-download-outline"></span> ${f.downloadCount}</span>` : ''}
+            </div>
           </div>
           ${actionBtn}
         </div>

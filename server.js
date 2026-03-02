@@ -1,10 +1,14 @@
 const express = require('express');
 const { google } = require('googleapis');
 const path = require('path');
+const crypto = require('crypto');
+const mongoose = require('mongoose');
+const rateLimit = require('express-rate-limit');
 require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const DOWNLOAD_SECRET = process.env.DOWNLOAD_SECRET || 'locket-wan-default-secret';
 
 // ==== Google Drive API config ====
 const CLIENT_ID = process.env.YOUR_CLIENT_ID;
@@ -19,6 +23,42 @@ if (!CLIENT_ID || !CLIENT_SECRET || !REDIRECT_URI || !REFRESH_TOKEN) {
 }
 // ==== 🔒 PUBLIC FOLDER CỐ ĐỊNH ====
 const FIXED_FOLDER_ID = "1nVG6vLAD5H3Vqhqlqs5enDgtmfcVgYOo";
+
+// ==== MongoDB & Rate Limit config ====
+const MONGODB_URI = process.env.MONGODB_URI;
+
+// Define Schema & Model
+const fileStatSchema = new mongoose.Schema({
+  fileId: { type: String, required: true, unique: true },
+  downloadCount: { type: Number, default: 0 }
+});
+const FileStat = mongoose.model('FileStat', fileStatSchema);
+
+// Connect to MongoDB
+if (MONGODB_URI) {
+  mongoose.connect(MONGODB_URI)
+    .then(() => console.log('✅ Connected to MongoDB'))
+    .catch(err => console.error('❌ MongoDB connection error:', err));
+} else {
+  console.warn('⚠️  MONGODB_URI is not set. Download statistics will not be saved.');
+}
+
+// Rate limiters
+const filesLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 30, // Limit each IP to 30 requests per `window`
+  message: { error: "Quá nhiều yêu cầu tải danh sách. Vui lòng thử lại sau." },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+const downloadLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 20, // Limit each IP to 20 downloads per `window`
+  message: "Quá nhiều yêu cầu tải. Vui lòng thử lại sau 15 phút.",
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 let oauth2Client = null;
 let drive = null;
@@ -165,8 +205,16 @@ async function getOrCreateShareLink(fileId) {
 
 
 
+// ==== Helper: Tạo link tải có thời hạn ====
+function generateDownloadUrl(fileId) {
+  const expires = Date.now() + 30 * 1000; // 2 giờ
+  const dataToSign = `${fileId}:${expires}`;
+  const signature = crypto.createHmac('sha256', DOWNLOAD_SECRET).update(dataToSign).digest('hex');
+  return `/download/${fileId}?expires=${expires}&signature=${signature}`;
+}
+
 // ==== 🔒 PUBLIC: List file trong folder cố định ====
-app.get('/files', async (req, res) => {
+app.get('/files', filesLimiter, async (req, res) => {
   try {
     const parentId = req.query.parentId || FIXED_FOLDER_ID;
 
@@ -182,13 +230,26 @@ app.get('/files', async (req, res) => {
       spaces: 'drive'
     });
 
+    // Lấy thống kê số lượt tải từ MongoDB (nếu có kết nối)
+    let statsMap = {};
+    if (mongoose.connection.readyState === 1) {
+      const fileIds = result.data.files.map(f => f.id);
+      const stats = await FileStat.find({ fileId: { $in: fileIds } });
+      statsMap = stats.reduce((acc, stat) => {
+        acc[stat.fileId] = stat.downloadCount;
+        return acc;
+      }, {});
+    }
+
     const files = (result.data.files || []).map(f => ({
       id: f.id,
       name: f.name,
       modifiedTime: f.modifiedTime,
       size: f.size,
       mimeType: f.mimeType,
-      isFolder: f.mimeType === 'application/vnd.google-apps.folder'
+      isFolder: f.mimeType === 'application/vnd.google-apps.folder',
+      downloadUrl: f.mimeType === 'application/vnd.google-apps.folder' ? null : generateDownloadUrl(f.id),
+      downloadCount: statsMap[f.id] || 0
     }));
 
     res.json(files);
@@ -202,50 +263,58 @@ app.get('/files', async (req, res) => {
 
 
 
-// ==== API cũ: Download file ====
-// ==== 🔒 PUBLIC DOWNLOAD ONLY ====
-// app.get('/download/:id', async (req, res) => {
-//   try {
-//     const fileId = req.params.id;
-
-//     const allowed = await isInsideFixedFolder(fileId);
-//     if (!allowed) {
-//       return res.status(403).send('Không có quyền tải file này');
-//     }
-
-//     const meta = await drive.files.get({
-//       fileId,
-//       fields: 'name, mimeType, size'
-//     });
-
-//     const driveRes = await drive.files.get(
-//       { fileId, alt: 'media' },
-//       { responseType: 'stream' }
-//     );
-
-//     res.setHeader('Content-Type', 'application/vnd.android.package-archive');
-//     res.setHeader('Content-Disposition', `attachment; filename="${meta.data.name}"`);
-//     res.setHeader('Content-Length', meta.data.size);
-//     res.setHeader('X-Content-Type-Options', 'nosniff');
-
-//     driveRes.data.pipe(res);
-
-//   } catch (err) {
-//     res.status(404).send('Không tìm thấy file');
-//   }
-// });
-app.get('/download/:id', async (req, res) => {
+// ==== 🔒 PUBLIC DOWNLOAD ONLY (Expiring Links) ====
+app.get('/download/:id', downloadLimiter, async (req, res) => {
   try {
     const fileId = req.params.id;
+    const { expires, signature } = req.query;
+
+    // Verify signature & expiration
+    if (!expires || !signature) {
+      return res.status(403).send('Link tải không hợp lệ (thiếu tham số)');
+    }
+    if (Date.now() > parseInt(expires, 10)) {
+      return res.status(403).send('Link tải đã hết hạn. Vui lòng tải lại trang để lấy link mới hoặc truy cập https://apk.locket-wan.top');
+    }
+
+    const expectedSignature = crypto.createHmac('sha256', DOWNLOAD_SECRET).update(`${fileId}:${expires}`).digest('hex');
+    if (signature !== expectedSignature) {
+      return res.status(403).send('Link tải không hợp lệ (sai chữ ký)');
+    }
 
     const allowed = await isInsideFixedFolder(fileId);
     if (!allowed) {
       return res.status(403).send('Không có quyền tải file này');
     }
 
-    const shareLink = await getOrCreateShareLink(fileId);
+    const meta = await drive.files.get({
+      fileId,
+      fields: 'name, mimeType, size'
+    });
 
-    return res.redirect(shareLink); // 🔥 redirect thay vì stream
+    const driveRes = await drive.files.get(
+      { fileId, alt: 'media' },
+      { responseType: 'stream' }
+    );
+
+    // Increment download count if MongoDB is connected
+    if (mongoose.connection.readyState === 1) {
+      await FileStat.findOneAndUpdate(
+        { fileId },
+        { $inc: { downloadCount: 1 } },
+        { upsert: true, new: true }
+      ).catch(err => console.error('Lỗi khi cập nhật lượt tải:', err));
+    }
+
+    res.setHeader('Content-Type', 'application/vnd.android.package-archive');
+    res.setHeader('Content-Disposition', `attachment; filename="${meta.data.name}"`);
+    if (meta.data.size) {
+      res.setHeader('Content-Length', meta.data.size);
+    }
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+
+    driveRes.data.pipe(res);
+
   } catch (err) {
     res.status(404).send('Không tìm thấy file');
   }
