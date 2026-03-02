@@ -1,0 +1,16 @@
+{
+  "name": "mini-upload",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "busboy": "^1.6.0",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "googleapis": "^160.0.0",
+    "multer": "^2.0.0",
+    "serverless-http": "^4.0.0"
+  }
+}

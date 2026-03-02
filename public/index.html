@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Google Drive</title>
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      background: #f8f9fa;
+      font-size: 14px;
+    }
+
+    .drive-header {
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .drive-header img {
+      width: 32px;
+      height: 32px;
+      margin-right: 13px;
+      border-radius: 10px;
+      /* chỉnh số này để bo nhiều/ít */
+    }
+
+    .header-title {
+      font-size: 22px;
+      font-weight: 400;
+      color: #202124;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+      font-size: 14px;
+      color: #5f6368;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding-bottom: 4px;
+    }
+
+    .breadcrumbs::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .breadcrumbs::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .breadcrumbs::-webkit-scrollbar-thumb {
+      background: #dadce0;
+      border-radius: 2px;
+    }
+
+    .breadcrumbs span {
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .breadcrumbs span:hover:not(.breadcrumb-current) {
+      background: #f1f3f4;
+    }
+
+    .breadcrumb-current {
+      color: #202124;
+      font-weight: 500;
+    }
+
+    /* File list - Desktop */
+    .file-list {
+      width: 100%;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      border-collapse: collapse;
+    }
+
+    .file-list th {
+      background: #f8f9fa;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 500;
+      color: #5f6368;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .file-list td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #f1f3f4;
+      vertical-align: middle;
+    }
+
+    .file-list tr:last-child td {
+      border-bottom: none;
+    }
+
+    .file-list tr:hover {
+      background: #f8f9fa;
+    }
+
+    .mfi-icon .file-icon {
+      margin-right: 0;
+    }
+
+    .file-icon {
+      font-size: 20px;
+      margin-right: 12px;
+      vertical-align: middle;
+    }
+
+    .folder-link,
+    .file-link {
+      color: #1a73e8;
+      text-decoration: none;
+      cursor: pointer;
+      word-break: break-word;
+    }
+
+    .folder-link:hover,
+    .file-link:hover {
+      text-decoration: underline;
+    }
+
+    .action-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-action {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: #5f6368;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-action:hover {
+      background: #f1f3f4;
+    }
+
+    .btn-download:hover {
+      color: #1a73e8;
+      background: #e8f0fe;
+    }
+
+    /* Mobile Filter Tabs */
+    .mobile-filter-bar {
+      display: none;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 0 0 12px 0;
+      gap: 8px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .mobile-filter-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 7px 14px;
+      border-radius: 20px;
+      border: 1.5px solid #dadce0;
+      background: white;
+      color: #5f6368;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.18s;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .filter-chip .mdi {
+      font-size: 15px;
+    }
+
+    .filter-chip:hover {
+      border-color: #1a73e8;
+      color: #1a73e8;
+    }
+
+    .filter-chip.active {
+      background: #1a73e8;
+      border-color: #1a73e8;
+      color: white;
+    }
+
+    .filter-chip .chip-count {
+      background: rgba(0, 0, 0, 0.12);
+      border-radius: 10px;
+      padding: 1px 6px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .filter-chip.active .chip-count {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Mobile File List */
+    .mobile-file-list {
+      display: none;
+    }
+
+    /* Mobile file explorer row */
+    .mobile-file-list {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-file-item {
+      display: flex;
+      align-items: center;
+      padding: 11px 14px;
+      border-bottom: 1px solid #f1f3f4;
+      gap: 10px;
+      transition: background 0.15s;
+      min-height: 52px;
+    }
+
+    .mobile-file-item:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-file-item:active {
+      background: #f1f3f4;
+    }
+
+    .mfi-icon {
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9px;
+    }
+
+    .mfi-icon .mdi {
+      font-size: 22px;
+    }
+
+    .mfi-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .mfi-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: #202124;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mfi-meta {
+      font-size: 11px;
+      color: #9aa0a6;
+      margin-top: 2px;
+    }
+
+    .mfi-action {
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: #5f6368;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .mfi-action:active {
+      background: #e8f0fe;
+      color: #1a73e8;
+    }
+
+    /* Icon bg by type */
+    .mfi-folder {
+      background: #fff8e1;
+    }
+
+    .mfi-apk {
+      background: #e8f5e9;
+    }
+
+    .mfi-image {
+      background: #fffde7;
+    }
+
+    .mfi-video {
+      background: #e0f7fa;
+    }
+
+    .mfi-audio {
+      background: #f3e5f5;
+    }
+
+    .mfi-doc {
+      background: #e8f0fe;
+    }
+
+    .mfi-archive {
+      background: #eceff1;
+    }
+
+    .mfi-code {
+      background: #f1f8e9;
+    }
+
+    .mfi-exe {
+      background: #fce4ec;
+    }
+
+    .mfi-other {
+      background: #f5f5f5;
+    }
+
+    .empty-note {
+      text-align: center;
+      padding: 60px 20px;
+      color: #5f6368;
+      font-size: 16px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Toast */
+    #toast-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 3000;
+    }
+
+    .toast {
+      background: #323232;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      animation: toastSlideIn 0.3s ease-out;
+      max-width: calc(100vw - 40px);
+    }
+
+    .toast-error {
+      background: #f44336;
+    }
+
+    .toast.fade-out {
+      animation: toastSlideOut 0.6s ease-out forwards;
+    }
+
+    @keyframes toastSlideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes toastSlideOut {
+      to {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+    }
+
+    /* Loading spinner */
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #5f6368;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      border: 3px solid #e0e0e0;
+      border-top-color: #1a73e8;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 12px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ===== MOBILE RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      body {
+        font-size: 16px;
+      }
+
+      .drive-header {
+        padding: 12px 16px;
+      }
+
+      .header-title {
+        font-size: 18px;
+      }
+
+      .main-content {
+        padding: 16px;
+      }
+
+      .file-list {
+        display: none;
+      }
+
+      .mobile-filter-bar {
+        display: flex;
+      }
+
+      .mobile-file-list {
+        display: block;
+      }
+
+      .mobile-file-item .file-icon {
+        font-size: 24px;
+      }
+
+      .mobile-file-name {
+        font-size: 16px;
+        line-height: 1.3;
+      }
+
+      #toast-container {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+      }
+
+      .toast {
+        font-size: 16px;
+        padding: 16px;
+      }
+
+      .breadcrumbs {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      .breadcrumbs span {
+        padding: 8px 12px;
+      }
+
+      .empty-note {
+        padding: 40px 20px;
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .mobile-file-actions {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 768px) and (orientation: landscape) {
+      .drive-header {
+        position: static;
+      }
+    }
+
+    .install-guide {
+      background: white;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .guide-header {
+      padding: 14px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      color: #1a73e8;
+      background: #e8f0fe;
+    }
+
+    .guide-header .mdi:last-child {
+      margin-left: auto;
+      transition: transform 0.2s;
+    }
+  </style>
+  <link rel="icon" href="https://locket-wan.top/snowlocket.png">
+</head>
+
+<body>
+  <div class="drive-header">
+    <img src="https://locket-wan.top/snowlocket.png" alt="Drive" style="width:32px;height:32px;margin-right:13px;">
+    <span class="header-title">Download apk Locket Wan</span>
+  </div>
+
+
+  <div class="main-content">
+    <div class="breadcrumbs" id="breadcrumbs"></div>
+    <div class="install-guide">
+      <div class="guide-header" onclick="toggleGuide()">
+        <a href="/huong-dan.html" class="mdi mdi-information-outline">Hướng dẫn cài đặt APK</a>
+        <span class="mdi" id="guideArrow"></span>
+      </div>
+
+    </div>
+
+
+    <!-- Desktop File List -->
+    <table class="file-list" id="fileTable">
+      <thead>
+        <tr>
+          <th class="col-name">Tên</th>
+          <th class="col-time">Ngày cập nhật</th>
+          <th class="col-size">Dung lượng</th>
+          <th class="col-action">Tác vụ</th>
+        </tr>
+      </thead>
+      <tbody id="fileListBody"></tbody>
+    </table>
+
+    <!-- Mobile Filter Tabs -->
+    <div class="mobile-filter-bar" id="mobileFilterBar"></div>
+
+    <!-- Mobile File List -->
+    <div class="mobile-file-list" id="mobileFileList"></div>
+
+    <div class="empty-note" id="emptyNote" style="display: none;">
+      <div style="margin-bottom: 16px;">
+        <span class="mdi mdi-folder-outline" style="font-size: 48px; color: #dadce0;"></span>
+      </div>
+      Chưa có tệp hay thư mục nào
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script>
+    let currentFolderId = null;
+    let breadcrumbs = [];
+    let folderNameMap = {};
+    let allFiles = [];         // cache toàn bộ files
+    let activeFilter = 'all'; // filter đang chọn
+
+    // ==== Filter definitions ====
+    const FILTERS = [
+      { key: 'all', label: 'Tất cả', icon: 'mdi-view-grid', match: () => true },
+      { key: 'folder', label: 'Thư mục', icon: 'mdi-folder', match: f => f.isFolder },
+      { key: 'apk', label: 'APK', icon: 'mdi-android', match: f => ext(f) === 'apk' },
+      { key: 'image', label: 'Ảnh', icon: 'mdi-file-image', match: f => ['png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp', 'svg'].includes(ext(f)) },
+      { key: 'video', label: 'Video', icon: 'mdi-file-video', match: f => ['mp4', 'mov', 'avi', 'mkv', 'webm'].includes(ext(f)) },
+      { key: 'audio', label: 'Âm nhạc', icon: 'mdi-file-music', match: f => ['mp3', 'wav', 'flac', 'ogg', 'aac'].includes(ext(f)) },
+      { key: 'doc', label: 'Tài liệu', icon: 'mdi-file-document', match: f => ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'csv'].includes(ext(f)) },
+      { key: 'archive', label: 'Nén', icon: 'mdi-folder-zip', match: f => ['zip', 'rar', '7z', 'tar', 'gz'].includes(ext(f)) },
+      { key: 'code', label: 'Code', icon: 'mdi-code-braces', match: f => ['js', 'ts', 'py', 'php', 'cs', 'java', 'html', 'css', 'json', 'xml', 'sh', 'cpp', 'c', 'go', 'rs'].includes(ext(f)) },
+      { key: 'exe', label: 'Exe/App', icon: 'mdi-application', match: f => ['exe', 'msi', 'dmg', 'deb', 'rpm'].includes(ext(f)) },
+    ];
+
+    function ext(f) {
+      return (f.name || '').split('.').pop().toLowerCase();
+    }
+
+    // ==== Render filter chips ====
+    function renderFilterBar(files) {
+      const bar = document.getElementById('mobileFilterBar');
+      if (!bar) return;
+      bar.innerHTML = FILTERS.map(filter => {
+        const count = filter.key === 'all' ? files.length : files.filter(filter.match).length;
+        if (count === 0 && filter.key !== 'all') return ''; // ẩn filter không có file
+        return `
+          <div class="filter-chip ${activeFilter === filter.key ? 'active' : ''}"
+               onclick="setFilter('${filter.key}')">
+            <span class="mdi ${filter.icon}"></span>
+            ${filter.label}
+            <span class="chip-count">${count}</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function setFilter(key) {
+      activeFilter = key;
+      renderFilterBar(allFiles);
+      renderMobileList(allFiles);
+    }
+
+    // ==== Utils ====
+    function isMobile() {
+      return window.innerWidth <= 768;
+    }
+
+    function formatSize(bytes) {
+      if (!bytes) return '';
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      if (bytes < 1024 * 1024 * 1024) return (bytes / 1024 / 1024).toFixed(1) + ' MB';
+      return (bytes / 1024 / 1024 / 1024).toFixed(2) + ' GB';
+    }
+
+    function showToast(msg, type = 'info') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+      const icon = type === 'error' ? 'mdi-alert-circle-outline' : 'mdi-information-outline';
+      toast.innerHTML = `<span class="mdi ${icon}"></span> ${msg}`;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.classList.add('fade-out');
+        setTimeout(() => toast.remove(), 600);
+      }, isMobile() ? 3000 : 2300);
+    }
+
+    // ==== File type icons ====
+    function getFileTypeIcon(file) {
+      if (file.isFolder) return '<span class="mdi mdi-folder file-icon" style="color:#ffb300"></span>';
+      const ext = (file.name || '').split('.').pop().toLowerCase();
+      const map = {
+        xml: ['mdi-xml', '#7d63e0'], py: ['mdi-language-python', '#306998'],
+        php: ['mdi-language-php', '#6e4fbb'], json: ['mdi-code-json', '#01a98e'],
+        exe: ['mdi-cog', '#455a64'], apk: ['mdi-android', '#43b755'],
+        cs: ['mdi-language-csharp', '#512bd4'], js: ['mdi-language-javascript', '#efd81d'],
+        html: ['mdi-language-html5', '#e34c26'], css: ['mdi-language-css3', '#2965f1'],
+        zip: ['mdi-folder-zip', '#607d8b'], rar: ['mdi-folder-zip', '#607d8b'],
+        txt: ['mdi-file-document-outline', '#222'], pdf: ['mdi-file-pdf-box', '#ea4335'],
+        doc: ['mdi-file-word-box', '#4285f4'], docx: ['mdi-file-word-box', '#4285f4'],
+        xls: ['mdi-file-excel-box', '#34a853'], xlsx: ['mdi-file-excel-box', '#34a853'],
+        png: ['mdi-file-image', '#fbc02d'], jpg: ['mdi-file-image', '#fbc02d'],
+        jpeg: ['mdi-file-image', '#fbc02d'], gif: ['mdi-file-image', '#fbc02d'],
+        mp3: ['mdi-file-music', '#9c27b0'], wav: ['mdi-file-music', '#9c27b0'],
+        mp4: ['mdi-file-video', '#00acc1'], mov: ['mdi-file-video', '#00acc1'],
+      };
+      const [icon, color] = map[ext] || ['mdi-file-outline', '#636c72'];
+      return `<span class="mdi ${icon} file-icon" style="color:${color}"></span>`;
+    }
+
+    // ==== Breadcrumbs ====
+    function renderBreadcrumbs() {
+      const bc = document.getElementById('breadcrumbs');
+      bc.innerHTML = '';
+      breadcrumbs.forEach((b, i) => {
+        if (i > 0) bc.innerHTML += `<span class="mdi mdi-chevron-right"></span>`;
+        if (i === breadcrumbs.length - 1) {
+          bc.innerHTML += `<span class="breadcrumb-current">${b.name}</span>`;
+        } else {
+          bc.innerHTML += `<span onclick="openFolderByBreadcrumb(${i})">${b.name}</span>`;
+        }
+      });
+    }
+
+    function openFolderByBreadcrumb(idx) {
+      breadcrumbs = breadcrumbs.slice(0, idx + 1);
+      openFolder(breadcrumbs[idx].id, false);
+    }
+
+    // ==== Render rows ====
+    function renderFileRow(f) {
+      return `
+        <tr>
+          <td class="col-name">
+            ${getFileTypeIcon(f)}
+            ${f.isFolder
+          ? `<span class="folder-link" onclick="openFolder('${f.id}')">${f.name}</span>`
+          : `<span class="file-link">${f.name}</span>`
+        }
+          </td>
+          <td class="col-time">${f.modifiedTime ? new Date(f.modifiedTime).toLocaleString('vi-VN') : ''}</td>
+          <td class="col-size">${f.size ? formatSize(f.size) : ''}</td>
+          <td>
+            <div class="action-group">
+              ${!f.isFolder ? `
+                <a class="btn-action btn-download mdi mdi-download" title="Tải về" href="/download/${f.id}" download></a>
+              ` : ''}
+            </div>
+          </td>
+        </tr>
+      `;
+    }
+
+    function renderMobileFileRow(f) {
+      const safeName = (f.name || '').replace(/[&<>"']/g, s =>
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[s])
+      );
+      const meta = f.isFolder ? 'Thư mục' : (f.size ? formatSize(f.size) : (f.mimeType || ''));
+
+      return `
+        <div class="mobile-file-item">
+          <div class="mobile-file-header">
+            ${getFileTypeIcon(f)}
+            <div class="mobile-file-name">${safeName}</div>
+          </div>
+          <div class="mobile-file-meta">${meta}</div>
+          <div class="mobile-file-actions">
+            ${f.isFolder
+          ? `<button class="btn-icon" onclick="openFolder('${f.id}')"><span class="mdi mdi-folder-open"></span> Mở</button>`
+          : `<a class="btn-icon" href="/download/${f.id}" download><span class="mdi mdi-download"></span> Tải về</a>`
+        }
+          </div>
+        </div>
+      `;
+    }
+
+    // ==== Render mobile list with active filter ====
+    function renderMobileList(files) {
+      const mobileList = document.getElementById('mobileFileList');
+      const emptyNote = document.getElementById('emptyNote');
+      const filter = FILTERS.find(f => f.key === activeFilter);
+      const filtered = files.filter(filter.match);
+
+      if (filtered.length === 0) {
+        mobileList.innerHTML = '';
+        emptyNote.style.display = '';
+      } else {
+        mobileList.innerHTML = filtered.map(renderMobileFileRow).join('');
+        emptyNote.style.display = 'none';
+      }
+    }
+
+    // ==== Fetch & display files ====
+    async function fetchFiles(folderId) {
+      const tbody = document.getElementById('fileListBody');
+      const mobileList = document.getElementById('mobileFileList');
+      const emptyNote = document.getElementById('emptyNote');
+
+      tbody.innerHTML = `<tr><td colspan="4"><div class="loading"><div class="spinner"></div><div>Đang tải...</div></div></td></tr>`;
+      mobileList.innerHTML = `<div class="loading"><div class="spinner"></div><div>Đang tải...</div></div>`;
+      emptyNote.style.display = 'none';
+
+      try {
+        const url = `/files${folderId ? '?parentId=' + encodeURIComponent(folderId) : ''}`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('Lỗi tải danh sách');
+        const files = await res.json();
+
+        files.sort((a, b) => {
+          if (a.isFolder && !b.isFolder) return -1;
+          if (!a.isFolder && b.isFolder) return 1;
+          return a.name.localeCompare(b.name, 'vi');
+        });
+
+        allFiles = files;
+        activeFilter = 'all';
+
+        if (files.length === 0) {
+          tbody.innerHTML = '';
+          mobileList.innerHTML = '';
+          emptyNote.style.display = '';
+        } else {
+          tbody.innerHTML = files.map(renderFileRow).join('');
+          emptyNote.style.display = 'none';
+          renderFilterBar(files);
+          renderMobileList(files);
+        }
+      } catch (err) {
+        tbody.innerHTML = '';
+        mobileList.innerHTML = '';
+        showToast('Không thể tải danh sách file', 'error');
+        console.error(err);
+      }
+    }
+
+    // ==== Folder navigation ====
+    async function openFolder(folderId, pushBread = true) {
+      currentFolderId = folderId;
+
+      if (pushBread) {
+        let name = 'Thư mục';
+        if (folderId && folderNameMap[folderId]) {
+          name = folderNameMap[folderId];
+        }
+        breadcrumbs.push({ id: folderId, name });
+      }
+
+      renderBreadcrumbs();
+      await fetchFiles(folderId);
+    }
+
+    // Capture folder name when clicking into a folder
+    async function openFolderWithName(folderId, folderName) {
+      folderNameMap[folderId] = folderName;
+      await openFolder(folderId, true);
+    }
+
+    // Override renderFileRow to pass name
+    function renderFileRow(f) {
+      return `
+        <tr>
+          <td class="col-name">
+            ${getFileTypeIcon(f)}
+            ${f.isFolder
+          ? `<span class="folder-link" onclick="openFolderWithName('${f.id}', '${f.name.replace(/'/g, "\\'")}')">${f.name}</span>`
+          : `<span class="file-link">${f.name}</span>`
+        }
+          </td>
+          <td class="col-time">${f.modifiedTime ? new Date(f.modifiedTime).toLocaleString('vi-VN') : ''}</td>
+          <td class="col-size">${f.size ? formatSize(f.size) : ''}</td>
+          <td>
+            <div class="action-group">
+              ${!f.isFolder ? `
+                <a class="btn-action btn-download mdi mdi-download" title="Tải về" href="/download/${f.id}" download></a>
+              ` : ''}
+            </div>
+          </td>
+        </tr>
+      `;
+    }
+
+    // Classify file type for icon bg color
+    function getFileClass(f) {
+      if (f.isFolder) return 'mfi-folder';
+      const e = ext(f);
+      if (e === 'apk') return 'mfi-apk';
+      if (['png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp', 'svg'].includes(e)) return 'mfi-image';
+      if (['mp4', 'mov', 'avi', 'mkv', 'webm'].includes(e)) return 'mfi-video';
+      if (['mp3', 'wav', 'flac', 'ogg', 'aac'].includes(e)) return 'mfi-audio';
+      if (['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'csv'].includes(e)) return 'mfi-doc';
+      if (['zip', 'rar', '7z', 'tar', 'gz'].includes(e)) return 'mfi-archive';
+      if (['js', 'ts', 'py', 'php', 'cs', 'java', 'html', 'css', 'json', 'xml', 'sh', 'cpp', 'c', 'go', 'rs'].includes(e)) return 'mfi-code';
+      if (['exe', 'msi', 'dmg', 'deb', 'rpm'].includes(e)) return 'mfi-exe';
+      return 'mfi-other';
+    }
+
+    function getFileLabel(f) {
+      if (f.isFolder) return 'Thư mục';
+      const e = ext(f);
+      const labels = {
+        apk: 'APK', exe: 'EXE', msi: 'MSI', dmg: 'DMG',
+        pdf: 'PDF', doc: 'Word', docx: 'Word', xls: 'Excel', xlsx: 'Excel',
+        ppt: 'PowerPoint', pptx: 'PowerPoint', txt: 'Văn bản', csv: 'CSV',
+        zip: 'ZIP', rar: 'RAR', '7z': '7-Zip', tar: 'TAR', gz: 'GZ',
+        mp3: 'MP3', wav: 'WAV', flac: 'FLAC', ogg: 'OGG', aac: 'AAC',
+        mp4: 'MP4', mov: 'MOV', avi: 'AVI', mkv: 'MKV',
+        png: 'PNG', jpg: 'JPG', jpeg: 'JPEG', gif: 'GIF', webp: 'WebP',
+        js: 'JavaScript', ts: 'TypeScript', py: 'Python', php: 'PHP',
+        html: 'HTML', css: 'CSS', json: 'JSON', xml: 'XML',
+        cs: 'C#', java: 'Java', cpp: 'C++', go: 'Go',
+      };
+      const typeLabel = labels[e] ? labels[e] : (e ? e.toUpperCase() : 'Tệp');
+      return f.size ? `${typeLabel} · ${formatSize(f.size)}` : typeLabel;
+    }
+
+    function renderMobileFileRow(f) {
+      const safeName = (f.name || '').replace(/[&<>"']/g, s =>
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[s])
+      );
+      const safeJsName = f.name.replace(/'/g, "\\'");
+      const iconClass = getFileClass(f);
+      const iconHtml = getFileTypeIcon(f);
+
+      const actionBtn = f.isFolder
+        ? `<button class="mfi-action" onclick="openFolderWithName('${f.id}','${safeJsName}')" title="Mở">
+             <span class="mdi mdi-chevron-right"></span>
+           </button>`
+        : `<a class="mfi-action" href="/download/${f.id}" download title="Tải về">
+             <span class="mdi mdi-download"></span>
+           </a>`;
+
+      return `
+        <div class="mobile-file-item">
+          <div class="mfi-icon ${iconClass}">${iconHtml}</div>
+          <div class="mfi-info">
+            <div class="mfi-name">${safeName}</div>
+            <div class="mfi-meta">${getFileLabel(f)}</div>
+          </div>
+          ${actionBtn}
+        </div>
+      `;
+    }
+
+    // ==== Init ====
+    window.onload = function () {
+      breadcrumbs = [{ id: null, name: 'Tệp download apk của Locket Wan' }];
+      renderBreadcrumbs();
+      fetchFiles(null);
+    };
+  </script>
+</body>
+
+</html>
