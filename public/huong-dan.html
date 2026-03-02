@@ -9,10 +9,17 @@
     <link rel="icon" href="https://locket-wan.top/snowlocket.png">
 
     <style>
+        html,
+        body {
+            height: 100%;
+        }
+
         body {
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
             background: #f8f9fa;
+            display: flex;
+            flex-direction: column;
         }
 
         .header {
@@ -41,6 +48,7 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 24px;
+            flex: 1;
         }
 
         .card {
@@ -82,6 +90,51 @@
             .container {
                 padding: 16px;
             }
+        }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            margin-top: 40px;
+            background: #ffffff;
+            border-top: 1px solid #e0e0e0;
+            padding: 24px 16px;
+            text-align: center;
+            color: #5f6368;
+            font-size: 14px;
+        }
+
+        .site-footer .footer-title {
+            font-weight: 500;
+            color: #202124;
+            margin-bottom: 6px;
+        }
+
+        .site-footer a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        .site-footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .site-footer {
+                font-size: 15px;
+                padding: 20px 12px;
+            }
+        }
+
+        .brand-link {
+            color: #1a73e8;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .brand-link:hover {
+            color: #0b57d0;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -144,6 +197,20 @@
         </div>
 
     </div>
+    <footer class="site-footer">
+        <div class="footer-title">
+            Trang chủ chính thức
+            <a href="https://locket-wan.top" class="brand-link">Locket Wan</a>
+        </div>
+
+        <div>
+            © 2026 Locket Wan. All rights reserved.
+        </div>
+
+        <div style="margin-top:6px;">
+            Phát triển & vận hành bởi Quang
+        </div>
+    </footer>
 
 </body>
 

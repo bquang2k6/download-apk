@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mini Google Drive</title>
+  <title>Locket wan</title>
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css" rel="stylesheet">
   <style>
     * {
@@ -16,6 +16,14 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
       background: #f8f9fa;
       font-size: 14px;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    html,
+    body {
+      height: 100%;
     }
 
     .drive-header {
@@ -51,6 +59,7 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 24px;
+      flex: 1;
     }
 
     .breadcrumbs {
@@ -550,6 +559,51 @@
       margin-left: auto;
       transition: transform 0.2s;
     }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      margin-top: 40px;
+      background: #ffffff;
+      border-top: 1px solid #e0e0e0;
+      padding: 24px 16px;
+      text-align: center;
+      color: #5f6368;
+      font-size: 14px;
+    }
+
+    .site-footer .footer-title {
+      font-weight: 500;
+      color: #202124;
+      margin-bottom: 6px;
+    }
+
+    .site-footer a {
+      color: #1a73e8;
+      text-decoration: none;
+    }
+
+    .site-footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .site-footer {
+        font-size: 15px;
+        padding: 20px 12px;
+      }
+    }
+
+    .brand-link {
+      color: #1a73e8;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .brand-link:hover {
+      color: #0b57d0;
+      text-decoration: underline;
+    }
   </style>
   <link rel="icon" href="https://locket-wan.top/snowlocket.png">
 </head>
@@ -557,7 +611,7 @@
 <body>
   <div class="drive-header">
     <img src="https://locket-wan.top/snowlocket.png" alt="Drive" style="width:32px;height:32px;margin-right:13px;">
-    <span class="header-title">Download apk Locket Wan</span>
+    <span class="header-title">Tải app Locket Wan cho android</span>
   </div>
 
 
@@ -599,7 +653,20 @@
     </div>
   </div>
 
-  <div id="toast-container"></div>
+  <footer class="site-footer">
+    <div class="footer-title">
+      Trang chủ chính thức
+      <a href="https://locket-wan.top" class="brand-link">Locket Wan</a>
+    </div>
+
+    <div>
+      © 2026 Locket Wan. All rights reserved.
+    </div>
+
+    <div style="margin-top:6px;">
+      Phát triển & vận hành bởi Quang
+    </div>
+  </footer>
 
   <script>
     let currentFolderId = null;
@@ -934,7 +1001,7 @@
 
     // ==== Init ====
     window.onload = function () {
-      breadcrumbs = [{ id: null, name: 'Tệp download apk của Locket Wan' }];
+      breadcrumbs = [{ id: null, name: 'Tệp apk của Locket Wan' }];
       renderBreadcrumbs();
       fetchFiles(null);
     };
