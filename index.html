@@ -759,7 +759,8 @@
       { key: 'code', label: 'Code', icon: 'mdi-code-braces', match: f => ['js', 'ts', 'py', 'php', 'cs', 'java', 'html', 'css', 'json', 'xml', 'sh', 'cpp', 'c', 'go', 'rs'].includes(ext(f)) },
       { key: 'exe', label: 'Exe/App', icon: 'mdi-application', match: f => ['exe', 'msi', 'dmg', 'deb', 'rpm'].includes(ext(f)) },
     ];
-    const API_BASE = "https://tamko.shopacc17.site";
+    // const API_BASE = "https://tamko.shopacc17.site";
+    const API_BASE = "";
 
     function ext(f) {
       return (f.name || '').split('.').pop().toLowerCase();
@@ -874,7 +875,7 @@
             <div class="action-group" style="align-items: center;">
               ${!f.isFolder && f.downloadCount > 0 ? `<span class="download-count-badge" title="Số lượt tải"><span class="mdi mdi-download-outline"></span> ${f.downloadCount}</span>` : ''}
               ${!f.isFolder ? `
-                <a class="btn-action btn-download mdi mdi-download" title="Tải về" href="${API_BASE}${f.downloadUrl}" download></a>
+                <a class="btn-action btn-download mdi mdi-download" title="Tải về" href="${f.downloadUrl}" download></a>
               ` : ''}
             </div>
           </td>
@@ -901,7 +902,7 @@
           <div class="mobile-file-actions">
             ${f.isFolder
           ? `<button class="btn-icon" onclick="openFolder('${f.id}')"><span class="mdi mdi-folder-open"></span> Mở</button>`
-          : `<a class="btn-icon" href="${API_BASE}${f.downloadUrl}" download><span class="mdi mdi-download"></span> Tải về</a>`
+          : `<a class="btn-icon" href="${f.downloadUrl}" download><span class="mdi mdi-download"></span> Tải về</a>`
         }
           </div>
         </div>
@@ -935,7 +936,7 @@
       emptyNote.style.display = 'none';
 
       try {
-        const url = `${API_BASE}/files${folderId ? '?parentId=' + encodeURIComponent(folderId) : ''}`;
+        const url = "file.json";
         const res = await fetch(url);
         if (!res.ok) throw new Error('Lỗi tải danh sách');
         const files = await res.json();
@@ -1006,7 +1007,7 @@
             <div class="action-group" style="align-items: center;">
               ${!f.isFolder && f.downloadCount > 0 ? `<span class="download-count-badge" title="Số lượt tải"><span class="mdi mdi-download-outline"></span> ${f.downloadCount}</span>` : ''}
               ${!f.isFolder ? `
-                <a class="btn-action btn-download mdi mdi-download" title="Tải về" href="${API_BASE}${f.downloadUrl}" download></a>
+                <a class="btn-action btn-download mdi mdi-download" title="Tải về" href="${f.downloadUrl}" download></a>
               ` : ''}
             </div>
           </td>
@@ -1060,7 +1061,7 @@
         ? `<button class="mfi-action" onclick="openFolderWithName('${f.id}','${safeJsName}')" title="Mở">
              <span class="mdi mdi-chevron-right"></span>
            </button>`
-        : `<a class="mfi-action" href="${API_BASE}${f.downloadUrl}" download title="Tải về">
+        : `<a class="mfi-action" href="${f.downloadUrl}" download title="Tải về">
              <span class="mdi mdi-download"></span>
            </a>`;
 
