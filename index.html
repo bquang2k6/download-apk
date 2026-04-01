@@ -319,6 +319,18 @@
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
 
+    .mfi-note {
+      font-size: 11px;
+      /* Chữ nhỏ lại theo ý bạn */
+      color: #1a73e8;
+      /* Màu xanh Google đặc trưng */
+      margin-top: 2px;
+      line-height: 1.2;
+      display: block;
+      word-break: break-word;
+      /* Tránh tràn chữ nếu note quá dài */
+    }
+
     .mobile-file-item {
       display: flex;
       align-items: center;
@@ -710,6 +722,7 @@
         <tr>
           <th class="col-name">Tên</th>
           <th class="col-time">Ngày cập nhật</th>
+          <th class="col-device">Thiết bị</th>
           <th class="col-size">Dung lượng</th>
           <th class="col-action">Tác vụ</th>
         </tr>
@@ -802,12 +815,14 @@
       return window.innerWidth <= 768;
     }
 
-    function formatSize(bytes) {
-      if (!bytes) return '';
-      if (bytes < 1024) return bytes + ' B';
-      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-      if (bytes < 1024 * 1024 * 1024) return (bytes / 1024 / 1024).toFixed(1) + ' MB';
-      return (bytes / 1024 / 1024 / 1024).toFixed(2) + ' GB';
+    function formatSize(sizeValue) {
+      if (!sizeValue) return '';
+      // Nếu sizeValue là số (ví dụ: 101), mặc định thêm MB
+      if (typeof sizeValue === 'number') {
+        return sizeValue + ' MB';
+      }
+      // Nếu sizeValue đã là chuỗi (ví dụ: "101 MB"), trả về luôn
+      return sizeValue;
     }
 
     function showToast(msg, type = 'info') {
@@ -877,6 +892,7 @@
         }
           </td>
           <td class="col-time">${f.modifiedTime ? new Date(f.modifiedTime).toLocaleString('vi-VN') : ''}</td>
+          <td class="col-device">${f.note ? f.note : ''}</td>
           <td class="col-size">${f.size ? formatSize(f.size) : ''}</td>
           <td>
             <div class="action-group" style="align-items: center;">
@@ -1009,6 +1025,7 @@
         }
           </td>
           <td class="col-time">${f.modifiedTime ? new Date(f.modifiedTime).toLocaleString('vi-VN') : ''}</td>
+          <td class="col-device">${f.note ? f.note : ''}</td>
           <td class="col-size">${f.size ? formatSize(f.size) : ''}</td>
           <td>
             <div class="action-group" style="align-items: center;">
@@ -1064,6 +1081,7 @@
       const iconClass = getFileClass(f);
       const iconHtml = getFileTypeIcon(f);
 
+      // Kiểm tra nếu là folder thì hiện nút mũi tên, nếu là file thì hiện nút tải
       const actionBtn = f.isFolder
         ? `<button class="mfi-action" onclick="openFolderWithName('${f.id}','${safeJsName}')" title="Mở">
              <span class="mdi mdi-chevron-right"></span>
@@ -1081,6 +1099,7 @@
               ${getFileLabel(f)}
               ${!f.isFolder && f.downloadCount > 0 ? `<span class="mobile-download-count"><span class="mdi mdi-download-outline"></span> ${f.downloadCount}</span>` : ''}
             </div>
+            ${f.note ? `<div class="mfi-note" style="font-size: 11px; color: #1a73e8; margin-top: 2px;">${f.note}</div>` : ''}
           </div>
           ${actionBtn}
         </div>

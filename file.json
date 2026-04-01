@@ -1,10 +1,47 @@
 [
     {
         "id": "1",
-        "name": "Locket-Wan.apk",
+        "name": "app-arm64-v8a-release.apk",
         "isFolder": false,
-        "size": 269484032,
-        "modifiedTime": "2026-03-22T18:20:00",
-        "downloadUrl": "https://expo.dev/artifacts/eas/2HiMFBPhajRvhuLygStspR.apk"
+        "size": "96,57 MB",
+        "modifiedTime": "2026-04-01T11:36:41",
+        "downloadUrl": "https://download941.mediafire.com/0epzlw7zo6ggdW50KNuO6BgAqa3xcZEIXPyRRAlqknP6wB4-pYFrmKhoFDwEvkRKZ6Yaz-Ve6FnhOO9KMXyP5mymwjfSSlmRJzQ44FJX2fJMs1oWeNm1Pe_5H-9YZKAKjcO0QMpte8pLij7_iW614-0jJbPqJFkOBsue0PeMLytaVQ/usfowldemnp7ogq/app-arm64-v8a-release.apk",
+        "note": "Khuyên dùng: Dành cho hầu hết điện thoại đời mới hiện nay."
+    },
+    {
+        "id": "2",
+        "name": "app-armeabi-v7a-release.apk",
+        "isFolder": false,
+        "size": "90,22 MB",
+        "modifiedTime": "2026-04-01T11:36:17",
+        "downloadUrl": "https://download1587.mediafire.com/e4ropktdq9pgG9TKdAeom85zYZtpnAUTRt8emdiDXaRmNCSv5kqcrY6HSj4kWuEhgbEaN5XwscSXbZluTXi8wl87mQxjHP6vAz_alv40I7Yms7c7c6meaGAJZtyjyjjIJMgOp1UBPcdZP-UQBQ-QjJmTUYzK3fF1XQDvvSYttIVFBA/l7onewpjsmjyzmt/app-armeabi-v7a-release.apk",
+        "note": "Dành cho điện thoại đời cũ hoặc dòng máy giá rẻ."
+    },
+    {
+        "id": "3",
+        "name": "app-universal-release.apk",
+        "isFolder": false,
+        "size": "257,33 MB",
+        "modifiedTime": "2026-04-01T11:39:21",
+        "downloadUrl": "https://download1478.mediafire.com/hukbh5jwwwggyJjJGj-jbP5jBAfapu2Y5JhF0GSzkWBbS7qHicKMEmPVX59O4i527ZjzOAkDXm_E5Q4dGR4JdHJUFjTGcjK2_--sZ3olu_KuydiLWVlSaABE9M5H1GTqmkLqcbN-vaDBZ6R-LwAeKuSRKuDd6uRct3ircBF5GPrmPQ/j5zeqp8iqscu1pn/app-universal-release.apk",
+        "note": "Phù hợp cho tất cả các máy"
+    },
+    {
+        "id": "4",
+        "name": "app-x86-release.apk",
+        "isFolder": false,
+        "size": "101,96 MB",
+        "modifiedTime": "2026-04-01T11:37:05",
+        "downloadUrl": "https://download1979.mediafire.com/dai21gdml9wguZSgIgfEhGj-FyLo-GCWlsyPPb48GFcb31TUQSEGR60-OqzLasSgbN8v3DipVcSJbZ3nYjAOKZlqF9ApeEKIBf0bpMy8FVUtcxyAvOg-RYt00Vv5uetBDTQqJIhzr_lot3xqWNhQQwMP-egjO3fkMTFvdE_BcNVeoQ/y1g07d9ppvj7jrp/app-x86-release.apk",
+        "note": "máy chạy chip Intel/AMD"
+    },
+    {
+        "id": "5",
+        "name": "app-x86_64-release.apk",
+        "isFolder": false,
+        "size": "106,87 MB",
+        "modifiedTime": "2026-04-01T11:37:56",
+        "downloadUrl": "https://download1652.mediafire.com/cquqai12oymgYf4WvO5cUdu8Zd7CwzgnGZQPXon_EK9oE2XYWa4oRcY_WXSyeDgSRPp3okeMGePnZB2LKMcpBDuwaG6d16IqgI91hQpS8l14IosOb9y3rrQP_sbrJ_CXJoWhZZElhR0pj9x0GSCXyoQbcvzuKmA-bC_vJcIzTMR2jA/loxoemak6x6a1z9/app-x86_64-release.apk",
+        "note": "Dành cho máy tính hoặc phần mềm giả lập Android."
     }
 ]
