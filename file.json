@@ -4,7 +4,7 @@
         "name": "app-arm64-v8a-release.apk",
         "isFolder": false,
         "size": "99,31 MB",
-        "modifiedTime": "2026-04-01T11:36:41",
+        "modifiedTime": "2026-05-01T11:36:41",
         "downloadUrl": "https://www.mediafire.com/file/3syunce4oq09zuh/app-arm64-v8a-release.apk/file",
         "note": "Khuyên dùng: Dành cho hầu hết điện thoại đời mới hiện nay."
     },
@@ -13,7 +13,7 @@
         "name": "app-armeabi-v7a-release.apk",
         "isFolder": false,
         "size": "92,46 MB",
-        "modifiedTime": "2026-04-01T11:36:17",
+        "modifiedTime": "2026-05-01T11:36:17",
         "downloadUrl": "https://www.mediafire.com/file/kkxjyohayojyyt1/app-armeabi-v7a-release.apk/file",
         "note": "Dành cho điện thoại đời cũ hoặc dòng máy giá rẻ."
     },
@@ -22,7 +22,7 @@
         "name": "app-universal-release.apk",
         "isFolder": false,
         "size": "263,43 MB",
-        "modifiedTime": "2026-04-01T11:39:21",
+        "modifiedTime": "2026-05-01T11:39:21",
         "downloadUrl": "https://www.mediafire.com/file/o411luc7il78snd/app-universal-release.apk/file",
         "note": "Phù hợp cho tất cả các máy"
     },
@@ -31,7 +31,7 @@
         "name": "app-x86-release.apk",
         "isFolder": false,
         "size": "104,65 MB",
-        "modifiedTime": "2026-04-01T11:37:05",
+        "modifiedTime": "2026-05-01T11:37:05",
         "downloadUrl": "https://www.mediafire.com/file/qnc0btlrclkdfdc/app-x86-release.apk/file",
         "note": "máy chạy chip Intel/AMD"
     },
@@ -40,7 +40,7 @@
         "name": "app-x86_64-release.apk",
         "isFolder": false,
         "size": "109,58 MB",
-        "modifiedTime": "2026-04-01T11:37:56",
+        "modifiedTime": "2026-05-01T11:37:56",
         "downloadUrl": "https://www.mediafire.com/file/j3ldnjxoo6vudsn/app-x86_64-release.apk/file",
         "note": "Dành cho máy tính hoặc phần mềm giả lập Android."
     }
