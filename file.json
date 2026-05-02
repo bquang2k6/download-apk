@@ -3,45 +3,45 @@
         "id": "1",
         "name": "app-arm64-v8a-release.apk",
         "isFolder": false,
-        "size": "99,31 MB",
-        "modifiedTime": "2026-05-01T11:36:41",
-        "downloadUrl": "https://www.mediafire.com/file/3syunce4oq09zuh/app-arm64-v8a-release.apk/file",
+        "size": "101,32 MB",
+        "modifiedTime": "2026-05-02T20:36:41",
+        "downloadUrl": "https://www.mediafire.com/file/i65e4fl01quacfc/app-arm64-v8a-release.apk/file",
         "note": "Khuyên dùng: Dành cho hầu hết điện thoại đời mới hiện nay."
     },
     {
         "id": "2",
         "name": "app-armeabi-v7a-release.apk",
         "isFolder": false,
-        "size": "92,46 MB",
-        "modifiedTime": "2026-05-01T11:36:17",
-        "downloadUrl": "https://www.mediafire.com/file/kkxjyohayojyyt1/app-armeabi-v7a-release.apk/file",
+        "size": "94,48 MB",
+        "modifiedTime": "2026-05-02T20:36:17",
+        "downloadUrl": "https://www.mediafire.com/file/ih1gzmw2yyapofj/app-armeabi-v7a-release.apk/file",
         "note": "Dành cho điện thoại đời cũ hoặc dòng máy giá rẻ."
     },
     {
         "id": "3",
         "name": "app-universal-release.apk",
         "isFolder": false,
-        "size": "263,43 MB",
-        "modifiedTime": "2026-05-01T11:39:21",
-        "downloadUrl": "https://www.mediafire.com/file/o411luc7il78snd/app-universal-release.apk/file",
+        "size": "265,45 MB",
+        "modifiedTime": "2026-05-02T20:39:21",
+        "downloadUrl": "https://www.mediafire.com/file/f2jy6e0mb29xohr/app-universal-release.apk/file",
         "note": "Phù hợp cho tất cả các máy"
     },
     {
         "id": "4",
         "name": "app-x86-release.apk",
         "isFolder": false,
-        "size": "104,65 MB",
-        "modifiedTime": "2026-05-01T11:37:05",
-        "downloadUrl": "https://www.mediafire.com/file/qnc0btlrclkdfdc/app-x86-release.apk/file",
+        "size": "106,67 MB",
+        "modifiedTime": "2026-05-02T20:37:05",
+        "downloadUrl": "https://www.mediafire.com/file/6l8bqz7lowd0vu0/app-x86-release.apk/file",
         "note": "máy chạy chip Intel/AMD"
     },
     {
         "id": "5",
         "name": "app-x86_64-release.apk",
         "isFolder": false,
-        "size": "109,58 MB",
-        "modifiedTime": "2026-05-01T11:37:56",
-        "downloadUrl": "https://www.mediafire.com/file/j3ldnjxoo6vudsn/app-x86_64-release.apk/file",
+        "size": "111,59 MB",
+        "modifiedTime": "2026-05-02T20:37:56",
+        "downloadUrl": "https://www.mediafire.com/file/7td1tijw84088dg/app-x86_64-release.apk/file",
         "note": "Dành cho máy tính hoặc phần mềm giả lập Android."
     }
 ]
