@@ -3,45 +3,45 @@
         "id": "1",
         "name": "app-arm64-v8a-release.apk",
         "isFolder": false,
-        "size": "101,37 MB",
-        "modifiedTime": "2026-05-24T19:10:10",
-        "downloadUrl": "https://www.mediafire.com/file/izfh3k6fhqlvhc9/app-arm64-v8a-release.apk/file",
+        "size": "92,48 MB",
+        "modifiedTime": "2026-06-20T16:33:00",
+        "downloadUrl": "https://apilocketwan.traidep.site/apk/app-arm64-v8a-release.apk",
         "note": "Khuyên dùng: Dành cho hầu hết điện thoại đời mới hiện nay."
     },
     {
         "id": "2",
         "name": "app-armeabi-v7a-release.apk",
         "isFolder": false,
-        "size": "94,54 MB",
-        "modifiedTime": "2026-05-24T19:09:48",
-        "downloadUrl": "https://www.mediafire.com/file/k8zoo4drrz5up3w/app-armeabi-v7a-release.apk/file",
+        "size": "84,35 MB",
+        "modifiedTime": "2026-06-20T16:32:00",
+        "downloadUrl": "https://apilocketwan.traidep.site/apk/app-armeabi-v7a-release.apk",
         "note": "Dành cho điện thoại đời cũ hoặc dòng máy giá rẻ."
     },
     {
         "id": "3",
         "name": "app-universal-release.apk",
         "isFolder": false,
-        "size": "265,51 MB",
-        "modifiedTime": "2026-05-24T19:11:43",
-        "downloadUrl": "https://www.mediafire.com/file/a0642eeqzuutiad/app-universal-release.apk/file",
+        "size": "225,69 MB",
+        "modifiedTime": "2026-06-20T16:32:00",
+        "downloadUrl": "https://apilocketwan.traidep.site/apk/app-universal-release.apk",
         "note": "Phù hợp cho tất cả các máy."
     },
     {
         "id": "4",
         "name": "app-x86-release.apk",
         "isFolder": false,
-        "size": "106,71 MB",
-        "modifiedTime": "2026-05-24T19:11:14",
-        "downloadUrl": "https://www.mediafire.com/file/thzgsyv2bma8wep/app-x86-release.apk/file",
+        "size": "98,29 MB",
+        "modifiedTime": "2026-06-20T16:33:00",
+        "downloadUrl": "https://apilocketwan.traidep.site/apk/app-x86-release.apk",
         "note": "Dành cho máy chạy chip Intel/AMD."
     },
     {
         "id": "5",
         "name": "app-x86_64-release.apk",
         "isFolder": false,
-        "size": "111,64 MB",
-        "modifiedTime": "2026-05-24T19:10:29",
-        "downloadUrl": "https://www.mediafire.com/file/zk4knvsu1k7vbwv/app-x86_64-release.apk/file",
+        "size": "99,75 MB",
+        "modifiedTime": "2026-06-20T16:32:00",
+        "downloadUrl": "https://apilocketwan.traidep.site/apk/app-x86_64-release.apk",
         "note": "Dành cho máy tính hoặc phần mềm giả lập Android."
     }
 ]
