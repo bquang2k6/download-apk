@@ -1,10 +1,11 @@
 [
+
     {
         "id": "1",
         "name": "app-arm64-v8a-release.apk",
         "isFolder": false,
         "size": "92,48 MB",
-        "modifiedTime": "2026-06-20T16:33:00",
+        "modifiedTime": "2026-06-27T13:52:00",
         "downloadUrl": "https://api.wangtech.top/apk/app-arm64-v8a-release.apk",
         "note": "Khuyên dùng: Dành cho hầu hết điện thoại đời mới hiện nay."
     },
@@ -13,7 +14,7 @@
         "name": "app-armeabi-v7a-release.apk",
         "isFolder": false,
         "size": "84,35 MB",
-        "modifiedTime": "2026-06-20T16:32:00",
+        "modifiedTime": "2026-06-27T13:51:00",
         "downloadUrl": "https://api.wangtech.top/apk/app-armeabi-v7a-release.apk",
         "note": "Dành cho điện thoại đời cũ hoặc dòng máy giá rẻ."
     },
@@ -22,7 +23,7 @@
         "name": "app-universal-release.apk",
         "isFolder": false,
         "size": "225,69 MB",
-        "modifiedTime": "2026-06-20T16:32:00",
+        "modifiedTime": "2026-06-27T13:51:00",
         "downloadUrl": "https://api.wangtech.top/apk/app-universal-release.apk",
         "note": "Phù hợp cho tất cả các máy."
     },
@@ -31,7 +32,7 @@
         "name": "app-x86-release.apk",
         "isFolder": false,
         "size": "98,29 MB",
-        "modifiedTime": "2026-06-20T16:33:00",
+        "modifiedTime": "2026-06-27T13:51:00",
         "downloadUrl": "https://api.wangtech.top/apk/app-x86-release.apk",
         "note": "Dành cho máy chạy chip Intel/AMD."
     },
@@ -40,7 +41,7 @@
         "name": "app-x86_64-release.apk",
         "isFolder": false,
         "size": "99,75 MB",
-        "modifiedTime": "2026-06-20T16:32:00",
+        "modifiedTime": "2026-06-27T13:52:00",
         "downloadUrl": "https://api.wangtech.top/apk/app-x86_64-release.apk",
         "note": "Dành cho máy tính hoặc phần mềm giả lập Android."
     }
