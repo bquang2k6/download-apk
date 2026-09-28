@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="vi">
+<!doctype html>
+<html lang="vi" data-theme="light">
+
 <!-- Structured Data JSON-LD -->
 <script type="application/ld+json">
 {
@@ -14,7 +15,7 @@
     "priceCurrency": "VND"
   },
   "url": "https://locket-wan.top/",
-  "image": "https://locket-wan.top/snowlocket.png",
+  "image": "https://locket-wan.top/favicon.png",
   "author": {
     "@type": "Person",
     "name": "Quang"
@@ -24,10 +25,11 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tải APK Locket Wan cho Android | Locket Wan</title>
-  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#FFE091" id="tc">
+
   <!-- ===== SEO META ===== -->
+  <title>Tải APK Locket Wan cho Android | Locket Wan</title>
   <meta name="description"
     content="Tải APK Locket Wan mới nhất cho Android. Trang chủ chính thức Locket Wan - download nhanh, an toàn, cập nhật phiên bản mới nhất.">
   <meta name="keywords"
@@ -49,1069 +51,2089 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Tải APK Locket Wan mới nhất cho Android">
   <meta name="twitter:description" content="Download APK Locket Wan chính thức, cập nhật mới nhất.">
-  <meta name="twitter:image" content="https://locket-wan.top/snowlocket.png">
+  <meta name="twitter:image" content="https://locket-wan.top/favicon.png">
 
   <!-- Favicon -->
-  <link rel="icon" href="https://locket-wan.top/snowlocket.png" type="image/png">
-
+  <link rel="icon" href="https://locket-wan.top/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/common.css">
   <style>
-    * {
-      box-sizing: border-box;
+    /* HERO */
+    .sr {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0)
     }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-      background: #f8f9fa;
-      font-size: 14px;
-
+    .hero {
+      --shell: calc(min(120vw, 62svh)*1.2579);
+      position: relative;
+      min-height: 100svh;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 64px 24px 32px;
+      overflow: hidden
     }
 
-    html,
-    body {
-      height: 100%;
+    @media(min-width:768px) {
+      .hero {
+        justify-content: center;
+        padding: 0 24px
+      }
     }
 
-    .drive-header {
+    .hero:before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 52svh;
+      background: linear-gradient(to bottom, rgb(var(--accent)/.28), transparent);
+      pointer-events: none
+    }
+
+    .fl-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 25
+    }
+
+    @media(max-width:767px) {
+      .fb:not(.show-mob) {
+        display: none !important
+      }
+
+      .fb.bff {
+        left: 15% !important;
+        top: 60% !important;
+      }
+
+      .fb.heart {
+        left: 88% !important;
+        top: 40% !important;
+      }
+    }
+
+    .fb {
+      position: absolute;
+      transform: translate(-50%, -50%)
+    }
+
+    .fb.desk {
+      display: none
+    }
+
+    @media(min-width:1024px) {
+      .fb.desk {
+        display: block
+      }
+    }
+
+    .fe {
+      opacity: 0
+    }
+
+    .fd {
+      animation: drift var(--dd) ease-in-out infinite;
+      animation-play-state: paused
+    }
+
+    .go .fd {
+      animation-play-state: running
+    }
+
+    @keyframes drift {
+
+      0%,
+      100% {
+        transform: none
+      }
+
+      25% {
+        transform: translateY(calc(var(--dr)*-1))
+      }
+
+      75% {
+        transform: translateY(var(--dr))
+      }
+    }
+
+    .fp {
+      will-change: transform, opacity
+    }
+
+    .photo {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 16.875%;
+      overflow: hidden;
+      box-shadow: 0 5px 10px #0000000a, 0 19px 19px #00000008, 0 43px 26px #00000005, 0 76px 30px #00000003
+    }
+
+    .photo .pf {
+      position: absolute;
+      inset: auto 0 0 0;
+      display: flex;
+      align-items: flex-end;
+      gap: 3%;
+      padding: 6%;
+      background: linear-gradient(to top, #0000000d, transparent)
+    }
+
+    .photo .av {
+      width: 16vmin;
+      max-width: 16%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #ffffffd9;
+      flex: none
+    }
+
+    .cap {
       background: #fff;
-      border-bottom: 1px solid #e0e0e0;
-      padding: 16px 24px;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      color: #1a1200;
+      border-radius: 99px;
+      padding: .15em .7em;
+      font-size: 1.5vmin;
+      font-weight: 800;
+      white-space: nowrap
     }
 
-    .drive-header img {
-      width: 32px;
-      height: 32px;
-      margin-right: 13px;
-      border-radius: 10px;
-      /* chỉnh số này để bo nhiều/ít */
+    .stk {
+      filter: drop-shadow(0 6px 12px #0000000d) drop-shadow(0 40px 26px #00000008);
+      line-height: 1
     }
 
-    .header-title {
-      font-size: 22px;
-      font-weight: 400;
-      color: #202124;
+    .tag {
+      font-weight: 900;
+      padding: .3em .8em;
+      border-radius: 99px;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      box-shadow: 0 4px 12px #0000001a
     }
 
-    .main-content {
-      width: 100%;
-      padding: 24px;
-      flex: 1;
+    .tile {
+      aspect-ratio: 1;
+      border-radius: 26%;
+      display: grid;
+      place-items: center
     }
 
-    .breadcrumbs {
-      display: flex;
-      align-items: center;
-      margin-bottom: 16px;
-      font-size: 14px;
-      color: #5f6368;
-      overflow-x: auto;
-      white-space: nowrap;
-      padding-bottom: 4px;
-    }
-
-    .breadcrumbs::-webkit-scrollbar {
-      height: 4px;
-    }
-
-    .breadcrumbs::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    .breadcrumbs::-webkit-scrollbar-thumb {
-      background: #dadce0;
-      border-radius: 2px;
-    }
-
-    .breadcrumbs span {
-      cursor: pointer;
-      padding: 4px 8px;
-      border-radius: 4px;
-      flex-shrink: 0;
-    }
-
-    .breadcrumbs span:hover:not(.breadcrumb-current) {
-      background: #f1f3f4;
-    }
-
-    .breadcrumb-current {
-      color: #202124;
-      font-weight: 500;
-    }
-
-    /* File list - Desktop */
-    .file-list {
-      width: 100%;
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      border-collapse: collapse;
-    }
-
-    .file-list th {
-      background: #f8f9fa;
-      padding: 12px 16px;
-      text-align: left;
-      font-weight: 500;
-      color: #5f6368;
-      border-bottom: 1px solid #e0e0e0;
-    }
-
-    .file-list td {
-      padding: 12px 16px;
-      border-bottom: 1px solid #f1f3f4;
-      vertical-align: middle;
-    }
-
-    .file-list tr:last-child td {
-      border-bottom: none;
-    }
-
-    .file-list tr:hover {
-      background: #f8f9fa;
-    }
-
-    .mfi-icon .file-icon {
-      margin-right: 0;
-    }
-
-    .file-icon {
-      font-size: 20px;
-      margin-right: 12px;
-      vertical-align: middle;
-    }
-
-    .folder-link,
-    .file-link {
-      color: #1a73e8;
-      text-decoration: none;
-      cursor: pointer;
-      word-break: break-word;
-    }
-
-    .folder-link:hover,
-    .file-link:hover {
-      text-decoration: underline;
-    }
-
-    .action-group {
-      display: flex;
-      gap: 8px;
-    }
-
-    .btn-action {
-      width: 32px;
-      height: 32px;
+    .tile i {
+      width: 40%;
+      aspect-ratio: 1;
       border-radius: 50%;
-      border: none;
-      background: transparent;
-      cursor: pointer;
+      background: #fffc
+    }
+
+    .stamp {
+      position: absolute;
+      inset: 0;
+      z-index: 30;
+      display: grid;
+      place-items: center;
+      pointer-events: none
+    }
+
+    .stamp div {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      color: #5f6368;
-      transition: all 0.2s;
-      text-decoration: none;
+      flex-direction: column;
+      align-items: center
     }
 
-    .btn-action:hover {
-      background: #f1f3f4;
-    }
-
-    .btn-download:hover {
-      color: #1a73e8;
-      background: #e8f0fe;
-    }
-
-    .download-count-badge {
-      font-size: 12px;
-      color: #5f6368;
-      background: #f1f3f4;
-      padding: 4px 8px;
-      border-radius: 12px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      margin-right: 8px;
-    }
-
-    /* Mobile Filter Tabs */
-    .mobile-filter-bar {
-      display: none;
-      overflow-x: auto;
-      white-space: nowrap;
-      padding: 0 0 12px 0;
-      gap: 8px;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-
-    .mobile-filter-bar::-webkit-scrollbar {
-      display: none;
-    }
-
-    .filter-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 7px 14px;
-      border-radius: 20px;
-      border: 1.5px solid #dadce0;
-      background: white;
-      color: #5f6368;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.18s;
-      white-space: nowrap;
-      user-select: none;
-    }
-
-    .filter-chip .mdi {
-      font-size: 15px;
-    }
-
-    .filter-chip:hover {
-      border-color: #1a73e8;
-      color: #1a73e8;
-    }
-
-    .filter-chip.active {
-      background: #1a73e8;
-      border-color: #1a73e8;
-      color: white;
-    }
-
-    .filter-chip .chip-count {
-      background: rgba(0, 0, 0, 0.12);
-      border-radius: 10px;
-      padding: 1px 6px;
-      font-size: 11px;
-      font-weight: 600;
-    }
-
-    .filter-chip.active .chip-count {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    /* Mobile File List */
-    .mobile-file-list {
-      display: none;
-    }
-
-    /* Mobile file explorer row */
-    .mobile-file-list {
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
-
-    .mfi-note {
-      font-size: 11px;
-      /* Chữ nhỏ lại theo ý bạn */
-      color: #1a73e8;
-      /* Màu xanh Google đặc trưng */
-      margin-top: 2px;
-      line-height: 1.2;
+    .stamp b {
       display: block;
-      word-break: break-word;
-      /* Tránh tràn chữ nếu note quá dài */
+      font-weight: 900;
+      font-size: min(20vw, 104px);
+      line-height: 1.02;
+      letter-spacing: -.05em;
+      opacity: 0
     }
 
-    .mobile-file-item {
-      display: flex;
-      align-items: center;
-      padding: 11px 14px;
-      border-bottom: 1px solid #f1f3f4;
-      gap: 10px;
-      transition: background 0.15s;
-      min-height: 52px;
+    .stamp.out {
+      animation: stampOut .65s cubic-bezier(.55, 0, 1, .55) forwards
     }
 
-    .mobile-file-item:last-child {
-      border-bottom: none;
-    }
-
-    .mobile-file-item:active {
-      background: #f1f3f4;
-    }
-
-    .mfi-icon {
-      flex-shrink: 0;
-      width: 38px;
-      height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 9px;
-    }
-
-    .mfi-icon .mdi {
-      font-size: 22px;
-    }
-
-    .mfi-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .mfi-name {
-      font-size: 14px;
-      font-weight: 500;
-      color: #202124;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .mfi-meta {
-      font-size: 11px;
-      color: #9aa0a6;
-      margin-top: 2px;
-    }
-
-    .mfi-action {
-      flex-shrink: 0;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      border: none;
-      background: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      color: #5f6368;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.15s, color 0.15s;
-    }
-
-    .mfi-action:active {
-      background: #e8f0fe;
-      color: #1a73e8;
-    }
-
-    .mobile-download-count {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      color: #1a73e8;
-      background: #e8f0fe;
-      padding: 2px 6px;
-      border-radius: 8px;
-      font-size: 11px;
-      margin-left: 8px;
-    }
-
-    /* Icon bg by type */
-    .mfi-folder {
-      background: #fff8e1;
-    }
-
-    .mfi-apk {
-      background: #e8f5e9;
-    }
-
-    .mfi-image {
-      background: #fffde7;
-    }
-
-    .mfi-video {
-      background: #e0f7fa;
-    }
-
-    .mfi-audio {
-      background: #f3e5f5;
-    }
-
-    .mfi-doc {
-      background: #e8f0fe;
-    }
-
-    .mfi-archive {
-      background: #eceff1;
-    }
-
-    .mfi-code {
-      background: #f1f8e9;
-    }
-
-    .mfi-exe {
-      background: #fce4ec;
-    }
-
-    .mfi-other {
-      background: #f5f5f5;
-    }
-
-    .empty-note {
-      text-align: center;
-      padding: 60px 20px;
-      color: #5f6368;
-      font-size: 16px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Toast */
-    #toast-container {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 3000;
-    }
-
-    .toast {
-      background: #323232;
-      color: white;
-      padding: 12px 16px;
-      border-radius: 4px;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      animation: toastSlideIn 0.3s ease-out;
-      max-width: calc(100vw - 40px);
-    }
-
-    .toast-error {
-      background: #f44336;
-    }
-
-    .toast.fade-out {
-      animation: toastSlideOut 0.6s ease-out forwards;
-    }
-
-    @keyframes toastSlideIn {
-      from {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-
-      to {
-        transform: translateX(0);
+    @keyframes stampOut {
+      0% {
+        transform: scale(1);
         opacity: 1;
+        filter: blur(0)
       }
-    }
 
-    @keyframes toastSlideOut {
-      to {
-        transform: translateX(100%);
+      43% {
+        transform: scale(1.2);
+        opacity: 1;
+        filter: blur(0)
+      }
+
+      100% {
+        transform: scale(.12);
         opacity: 0;
+        filter: blur(14px)
       }
     }
 
-    /* Loading spinner */
-    .loading {
-      text-align: center;
-      padding: 40px;
-      color: #5f6368;
+    .grp-o {
+      position: relative;
+      z-index: 20
     }
 
-    .spinner {
-      display: inline-block;
-      width: 32px;
-      height: 32px;
-      border: 3px solid #e0e0e0;
-      border-top-color: #1a73e8;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin-bottom: 12px;
+    @media(min-width:768px) {
+      .grp-o {
+        transform: translateX(-13%)
+      }
     }
 
-    @keyframes spin {
+    .grp {
+      position: relative;
+      opacity: 0
+    }
+
+    .pv {
+      position: relative;
+      width: min(120vw, 62svh);
+      aspect-ratio: 1400/1761;
+      -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent 65%);
+      mask-image: linear-gradient(to bottom, #000 50%, transparent 65%)
+    }
+
+    @media(min-width:768px) {
+      .pv {
+        width: auto;
+        height: min(78svh, 760px);
+        -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 78%);
+        mask-image: linear-gradient(to bottom, #000 40%, transparent 78%)
+      }
+    }
+
+    .ph2 {
+      position: absolute;
+      left: 50%;
+      top: 6%;
+      width: 76%;
+      aspect-ratio: 393/852;
+      transform: translateX(-50%);
+      transform-origin: top;
+      container-type: inline-size
+    }
+
+    @media(min-width:768px) {
+      .ph2 {
+        width: 68%;
+        transform: translateX(-50%) rotate(-5deg)
+      }
+    }
+
+    .pb {
+      position: absolute;
+      inset: 0;
+      border-radius: 14%/6.5%;
+      overflow: hidden;
+      background: url('assets/index/lock-wallpaper.webp') center/cover;
+      box-shadow: 0 16px 50px #0000002e, inset 0 0 0 1px #0000001a
+    }
+
+    .pb:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, #ffffff8c, #ffffff47, transparent)
+    }
+
+    .sb {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      padding: 6cqw 10cqw 0;
+      font-size: 3.6cqw;
+      font-weight: 800;
+      color: #1a1200
+    }
+
+    .hg {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4.5cqw;
+      padding: 0 7cqw;
+      margin-top: 9cqw;
+      align-content: start
+    }
+
+    .hw {
+      grid-column: 1/3;
+      grid-row: 1/3;
+      position: relative;
+      opacity: 0
+    }
+
+    .hw.on {
+      animation: wpop .5s cubic-bezier(.3, 1.3, .5, 1) forwards
+    }
+
+    @keyframes wpop {
+      from {
+        opacity: 0;
+        transform: scale(1.5) translateY(-14px)
+      }
+
       to {
-        transform: rotate(360deg);
+        opacity: 1;
+        transform: none
       }
     }
 
-    /* ===== MOBILE RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      body {
-        font-size: 16px;
-      }
+    .hwi {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 18%;
+      overflow: hidden;
+      box-shadow: 0 20px 30px #0003
+    }
 
-      .drive-header {
-        padding: 12px 16px;
-      }
+    .hph {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity .5s ease-in-out
+    }
 
-      .header-title {
-        font-size: 18px;
-      }
+    .hph.on {
+      opacity: 1
+    }
 
-      .main-content {
-        padding: 16px;
-      }
+    .hb {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: flex-end;
+      gap: 3%;
+      padding: 6%;
+      background: linear-gradient(to top, #0000000d, transparent)
+    }
 
-      .file-list {
-        display: none;
-      }
+    .hb .av {
+      width: 16%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #fff;
+      flex: none
+    }
 
-      .mobile-filter-bar {
-        display: flex;
-      }
+    .hb .cap {
+      font-size: 3cqw
+    }
 
-      .mobile-file-list {
-        display: block;
-      }
+    .hl {
+      text-align: center;
+      font-size: 2.6cqw;
+      font-weight: 700;
+      color: #ffffffe6;
+      margin-top: 1.5cqw;
+      text-shadow: 0 1px 2px #0003
+    }
 
-      .mobile-file-item .file-icon {
-        font-size: 24px;
-      }
+    .hfl {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none
+    }
 
-      .mobile-file-name {
-        font-size: 16px;
-        line-height: 1.3;
-      }
+    .hfl span {
+      position: absolute;
+      top: 100%;
+      filter: drop-shadow(0 4px 6px #0003);
+      animation: rise2 1.6s ease-in-out forwards
+    }
 
-      #toast-container {
-        top: 10px;
-        right: 10px;
-        left: 10px;
-      }
-
-      .toast {
-        font-size: 16px;
-        padding: 16px;
-      }
-
-      .breadcrumbs {
-        font-size: 16px;
-        margin-bottom: 20px;
-      }
-
-      .breadcrumbs span {
-        padding: 8px 12px;
-      }
-
-      .empty-note {
-        padding: 40px 20px;
-        font-size: 16px;
+    @keyframes rise2 {
+      to {
+        transform: translateY(-62cqw)
       }
     }
 
-    @media (max-width: 480px) {
-      .mobile-file-actions {
-        flex-direction: column;
-        gap: 8px;
+    .ic2 b {
+      display: block;
+      width: 85%;
+      aspect-ratio: 1;
+      margin: 0 auto;
+      border-radius: 22%
+    }
+
+    .ic2 s {
+      display: block;
+      height: 1cqw;
+      width: 40%;
+      margin: 2cqw auto 0;
+      border-radius: 9px;
+      background: #ffffff80
+    }
+
+    .dip .ic2 {
+      animation: dip .45s ease-in-out both;
+      animation-delay: var(--dl)
+    }
+
+    @keyframes dip {
+
+      0%,
+      100% {
+        transform: none
+      }
+
+      30% {
+        transform: translateY(5px) scale(.95)
+      }
+
+      65% {
+        transform: translateY(-2.5px) scale(1.03)
       }
     }
 
-    @media (max-width: 768px) and (orientation: landscape) {
-      .drive-header {
-        position: static;
+    .qr {
+      position: absolute;
+      right: -10%;
+      top: 48%;
+      width: 38%;
+      display: none;
+      opacity: 0
+    }
+
+    @media(min-width:768px) {
+      .qr {
+        display: block
       }
     }
 
-    .install-guide {
-      background: white;
-      border-radius: 8px;
-      margin-bottom: 16px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    .go .qr {
+      animation: qrin .7s .12s cubic-bezier(.3, 1.5, .5, 1) forwards
+    }
+
+    @keyframes qrin {
+      from {
+        opacity: 0;
+        transform: scale(.3) rotate(20deg)
+      }
+
+      to {
+        opacity: 1;
+        transform: rotate(10deg)
+      }
+    }
+
+    .qr a {
+      display: block;
+      background: #fff;
+      padding: 8%;
+      border-radius: 16%;
+      box-shadow: 0 16px 50px #0000002e;
+      transition: transform .3s cubic-bezier(.3, 1.5, .5, 1)
+    }
+
+    .qr a:hover {
+      transform: scale(1.05)
+    }
+
+    .qr a:active {
+      transform: scale(.97)
+    }
+
+    .qr svg {
+      display: block;
+      width: 100%
+    }
+
+    .qr .tip {
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      margin-left: 20px;
+      width: max-content;
+      background: #fff;
+      color: #6b6b6b;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.3;
+      padding: 12px 22px;
+      border-radius: 24px;
+      box-shadow: 0 12px 40px #0003;
+      opacity: 0;
+      transform: translateY(-50%) rotate(-10deg) scale(.9);
+      transform-origin: left;
+      transition: .18s;
+      pointer-events: none
+    }
+
+    .qr:hover .tip {
+      opacity: 1;
+      transform: translateY(-50%) rotate(-10deg) scale(1)
+    }
+
+    .tb {
+      position: relative;
+      z-index: 25;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+      margin-top: calc(var(--shell)*-.35 + 12px);
+      opacity: 0
+    }
+
+    @media(min-width:768px) {
+      .tb {
+        margin-top: -13svh;
+        gap: 15px
+      }
+    }
+
+    .wmk {
+      font-size: 46px;
+      font-weight: 900;
+      letter-spacing: -.05em;
+      line-height: 1
+    }
+
+    .tb p {
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: rgb(var(--fg)/.5);
+      padding: 0 24px
+    }
+
+    @media(min-width:768px) {
+      .wmk {
+        font-size: 58px
+      }
+
+      .tb p {
+        font-size: 23px;
+        line-height: 1;
+        padding: 0
+      }
+
+      .get {
+        display: none !important
+      }
+    }
+
+    @media(min-width:1100px) {
+      .tb p {
+        font-size: 26px
+      }
+    }
+
+    .get {
+      margin-top: 8px;
+      font-size: 19px;
+      padding: 12px 28px
+    }
+
+    .chev {
+      padding: 12px;
+      color: rgb(var(--fg)/.3);
+      margin-top: 4px
+    }
+
+    .chev svg {
+      width: 36px;
+      height: auto;
+      display: block;
+      animation: bob 2.8s 1.4s ease-in-out infinite
+    }
+
+    @keyframes bob {
+
+      0%,
+      21%,
+      100% {
+        transform: none
+      }
+
+      11% {
+        transform: translateY(7px)
+      }
+    }
+
+    @media(max-height:690px) {
+      .chev {
+        display: none
+      }
+    }
+
+    .phone {
+      position: relative;
+      aspect-ratio: 9/19;
+      border-radius: 44px;
+      background: #141416;
+      padding: 8px;
+      box-shadow: 0 16px 50px #0000002e
+    }
+
+    .scr {
+      position: relative;
+      height: 100%;
+      border-radius: 36px;
+      overflow: hidden;
+      background: linear-gradient(170deg, #ffd9a0, #ff9fb0 55%, #8fb8ff)
+    }
+
+    .lock {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      color: #fff;
+      text-align: center;
+      padding-top: 36px;
+      text-shadow: 0 2px 8px #0003;
+      background: linear-gradient(170deg, #ffbf69, #ff7a8a 55%, #5b7cff);
+      transition: transform .75s var(--ease);
+      border-radius: 0 0 32px 32px
+    }
+
+    .lock.up {
+      transform: translateY(-104%)
+    }
+
+    .lock p {
+      font-size: 12px;
+      font-weight: 600
+    }
+
+    .lock b {
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1;
+      display: block
+    }
+
+    .lock:after {
+      content: "";
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      width: 96px;
+      height: 4px;
+      margin-left: -48px;
+      border-radius: 9px;
+      background: #fffc
+    }
+
+    .home {
+      position: absolute;
+      inset: 0;
+      padding: 44px 14px 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: min-content;
+      gap: 10px 8px;
+      align-content: start
+    }
+
+    .wgt {
+      grid-column: span 2;
+      grid-row: span 2;
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 18%;
+      overflow: hidden;
+      box-shadow: 0 8px 20px #0003
+    }
+
+    .ph {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity .5s
+    }
+
+    .ph.on {
+      opacity: 1
+    }
+
+    .p1 {
+      background: radial-gradient(circle at 30% 30%, #ffe3b3, transparent 50%), linear-gradient(135deg, #ff8a5c, #ff5e8a)
+    }
+
+    .p2 {
+      background: radial-gradient(circle at 70% 25%, #fff4c2, transparent 45%), linear-gradient(135deg, #4fd1c5, #3b82f6)
+    }
+
+    .p3 {
+      background: radial-gradient(circle at 40% 70%, #ffd6f0, transparent 50%), linear-gradient(135deg, #a78bfa, #f472b6)
+    }
+
+    .who {
+      position: absolute;
+      left: 6%;
+      bottom: 6%;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #ffffff40;
+      backdrop-filter: blur(6px);
+      border-radius: 99px;
+      padding: 3px 9px 3px 3px;
+      font-size: 9px;
+      font-weight: 700;
+      color: #fff
+    }
+
+    .who i {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #fff
+    }
+
+    .wl {
+      grid-column: span 2;
+      text-align: center;
+      font-size: 9px;
+      font-weight: 700;
+      color: #ffffffe6;
+      margin-top: -6px;
+      grid-row: 3
+    }
+
+    .ic {
+      aspect-ratio: 1;
+      border-radius: 22%;
+      background: #ffffff59;
+      width: 78%;
+      margin: 0 auto
+    }
+
+    .mini {
+      grid-column: span 1;
+      aspect-ratio: 1;
+      border-radius: 22%;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: scale(.4);
+      transition: opacity .4s, transform .5s var(--ease)
+    }
+
+    .mini.on {
+      opacity: 1;
+      transform: none
+    }
+
+    .fl {
+      position: absolute;
+      bottom: -10%;
+      font-size: 22px;
+      pointer-events: none;
+      animation: rise 1.8s ease-in-out forwards;
+      z-index: 4
+    }
+
+    @keyframes rise {
+      to {
+        transform: translateY(-330px);
+        opacity: .9
+      }
+    }
+
+    /* FEATURE DEMO */
+    .sec {
+      padding: 120px 0 0
+    }
+
+    .demo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px
+    }
+
+    @media(min-width:900px) {
+      .demo {
+        flex-direction: row;
+        justify-content: center;
+        gap: 64px
+      }
+    }
+
+    /* ===== CAROUSEL ===== */
+    .demo-l {
+      width: 100%;
+      max-width: 460px;
+      flex: none
+    }
+
+    .demo-box {
+      position: relative;
+      height: 480px;
+      border-radius: 44px;
+      background: rgb(var(--fg)/.04);
+      overflow: hidden;
+      touch-action: pan-y
+    }
+
+    .car {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y
+    }
+
+    .car:active {
+      cursor: grabbing
+    }
+
+    .ctrack {
+      display: flex;
+      height: 100%;
+      will-change: transform
+    }
+
+    .cs {
+      flex: none;
+      width: 100%;
+      height: 100%;
+      padding: 28px;
+      display: grid;
+      place-items: center
+    }
+
+    .ci {
+      height: 100%;
+      aspect-ratio: 9/16;
+      max-width: 100%;
+      border-radius: 32px;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      text-align: center;
+      padding: 16px;
+      box-shadow: 0 16px 50px #0000002e
+    }
+
+    .ci img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none
+    }
+
+    .cnav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #ffffffd9;
+      color: #1a1200;
+      display: none;
+      place-items: center;
+      font-size: 18px;
+      font-weight: 800;
+      box-shadow: 0 4px 14px #0002
+    }
+
+    .cnav.l {
+      left: 14px
+    }
+
+    .cnav.r {
+      right: 14px
+    }
+
+    @media(hover:hover) {
+      .cnav {
+        display: grid
+      }
+    }
+
+    .demo-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px
+    }
+
+    .dot {
+      position: relative;
+      height: 8px;
+      width: 8px;
+      border-radius: 99px;
+      background: rgb(var(--fg)/.2);
+      overflow: hidden;
+      transition: width .3s
+    }
+
+    .dot.on {
+      width: 32px
+    }
+
+    .dot i {
+      position: absolute;
+      inset: 0;
+      background: rgb(var(--fg));
+      transform: translateX(-100%)
+    }
+
+    .dot.on i {
+      animation: fill var(--d) linear forwards
+    }
+
+    @keyframes fill {
+      to {
+        transform: none
+      }
+    }
+
+    .demo-r {
+      max-width: 440px
+    }
+
+    .demo-r h3 {
+      font-size: clamp(28px, 4vw, 34px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -.02em
+    }
+
+    .demo-r h3 em {
+      font-style: normal;
+      color: var(--gold)
+    }
+
+    .demo-r>p {
+      margin-top: 16px;
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.6;
+      opacity: .6
+    }
+
+    .demo-r ul {
+      margin-top: 32px;
+      display: grid;
+      gap: 24px
+    }
+
+    .demo-r li button {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-align: left;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.35;
+      opacity: .35;
+      transition: opacity .3s, color .3s, transform .2s var(--ease)
+    }
+
+    .demo-r li button:hover {
+      opacity: .6;
+      transform: scale(1.03)
+    }
+
+    .demo-r li button.on {
+      opacity: 1;
+      color: var(--gold)
+    }
+
+    .demo-r li svg {
+      width: 24px;
+      height: 24px;
+      flex: none
+    }
+
+    .app {
+      position: absolute;
+      inset: 0;
+      z-index: 6;
+      background: #141416;
+      border-radius: 36px;
+      color: #fff;
+      opacity: 0;
+      transform: scale(.46);
+      transform-origin: 0 0;
+      transition: transform .6s var(--ease), opacity .3s;
+      pointer-events: none
+    }
+
+    .app.on {
+      opacity: 1;
+      transform: none
+    }
+
+    .app .top {
+      position: absolute;
+      top: 34px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .app .top span {
+      background: #ffffff1f;
+      border-radius: 99px;
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 700
+    }
+
+    .app .pic {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      top: 76px;
+      aspect-ratio: 1;
+      border-radius: 22px;
+      overflow: hidden
+    }
+
+    .app .bar {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 14px;
+      display: grid;
+      gap: 8px
+    }
+
+    .app .bar div {
+      background: #ffffff1f;
+      border-radius: 99px;
+      padding: 8px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      color: #fff9
+    }
+
+    /* FEATURE CARDS (COMPACT BENTO) */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+      margin-top: 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cards::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 120%;
+      height: 120%;
+      background: radial-gradient(circle at 50% 50%, rgba(255, 171, 0, 0.12), rgba(255, 94, 138, 0.12), transparent 70%);
+      transform: translate(-50%, -50%);
+      filter: blur(80px);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 24px;
+      padding: 24px 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+      color: #1a1200;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 16px;
+      text-align: left;
+      transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
       overflow: hidden;
     }
 
-    .guide-header {
-      padding: 14px 16px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 500;
-      color: #1a73e8;
-      background: #e8f0fe;
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 30%, rgba(255, 255, 255, 0.8) 50%, transparent 70%);
+      background-size: 250% 250%;
+      background-position: -150% 0;
+      opacity: 0;
+      transition: background-position .6s var(--ease), opacity .3s;
+      z-index: -1;
+      border-radius: inherit;
     }
 
-    .guide-header .mdi:last-child {
-      margin-left: auto;
-      transition: transform 0.2s;
+    .card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06), inset 0 0 0 1px rgba(255, 255, 255, 1);
+      background: rgba(255, 255, 255, 0.85);
     }
 
-    /* ===== FOOTER ===== */
-    .site-footer {
-      margin-top: 40px;
-      background: #ffffff;
-      border-top: 1px solid #e0e0e0;
-      padding: 24px 16px;
-      text-align: center;
-      color: #5f6368;
+    .card:hover::after {
+      opacity: 1;
+      background-position: 150% 100%;
+    }
+
+    .card .ico {
+      font-size: 36px;
+      margin-bottom: 0;
+      flex: none;
+      display: inline-block;
+      transition: transform .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.12));
+      transform-origin: center center;
+    }
+
+    .card:hover .ico {
+      transform: scale(1.15) rotate(10deg);
+    }
+
+    .card h3 {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 4px;
+      margin-top: 4px;
+      letter-spacing: -0.01em;
+      background: linear-gradient(110deg, #1a1200, #5c4400);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .card p {
       font-size: 14px;
+      font-weight: 600;
+      opacity: 0.6;
+      line-height: 1.45;
     }
 
-    .site-footer .footer-title {
-      font-weight: 500;
-      color: #202124;
-      margin-bottom: 6px;
-    }
+    @media (max-width: 767px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 48px;
+      }
 
-    .site-footer a {
-      color: #1a73e8;
-      text-decoration: none;
-    }
+      .card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 16px 12px;
+        gap: 8px;
+        border-radius: 20px;
+      }
 
-    .site-footer a:hover {
-      text-decoration: underline;
-    }
+      .card .ico {
+        font-size: 32px;
+      }
 
-    @media (max-width: 768px) {
-      .site-footer {
-        font-size: 15px;
-        padding: 20px 12px;
+      .card h3 {
+        font-size: 14px;
+        margin-top: 0;
+      }
+
+      .card p {
+        font-size: 12px;
       }
     }
 
-    .brand-link {
-      color: #1a73e8;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.2s;
+    .card .art {
+      height: 190px;
+      display: grid;
+      place-items: center;
+      width: 100%;
+      position: relative
     }
 
-    .brand-link:hover {
-      color: #0b57d0;
-      text-decoration: underline;
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      line-height: 1.25
+    }
+
+    .live {
+      width: 120px;
+      height: 170px;
+      border-radius: 24px;
+      background: #141416;
+      padding: 5px;
+      transform: rotate(-4deg)
+    }
+
+    .live div {
+      height: 100%;
+      border-radius: 19px;
+      background: linear-gradient(170deg, #ffbf69, #ff7a8a);
+      position: relative;
+      overflow: hidden
+    }
+
+    .live .w {
+      position: absolute;
+      left: 10px;
+      top: 24px;
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: #ffffff50
+    }
+
+    .live .w b {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #4fd1c5, #3b82f6);
+      transform: translateY(110%)
+    }
+
+    .card.vis .live .w b {
+      animation: slideUp .6s .3s var(--ease) forwards
+    }
+
+    @keyframes slideUp {
+      to {
+        transform: none
+      }
+    }
+
+    .snap {
+      position: absolute;
+      right: 6%;
+      bottom: 6%;
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #a78bfa, #f472b6);
+      border: 4px solid #fff;
+      box-shadow: 0 6px 18px #0003;
+      transform: scale(0)
+    }
+
+    .card.vis .snap {
+      animation: pop .5s .1s var(--ease) forwards, fly .7s 1.2s cubic-bezier(.5, 0, .75, 0) forwards
+    }
+
+    @keyframes pop {
+      to {
+        transform: scale(1)
+      }
+    }
+
+    @keyframes fly {
+      to {
+        transform: translate(-80px, -70px) scale(.2);
+        opacity: 0
+      }
+    }
+
+    .ring {
+      position: relative;
+      width: 160px;
+      height: 160px
+    }
+
+    .ring svg {
+      position: absolute;
+      inset: 0;
+      transform: rotate(-90deg)
+    }
+
+    .ring circle {
+      fill: none;
+      stroke-width: 7
+    }
+
+    .ring .t {
+      stroke: #dcdcdc
+    }
+
+    .ring .p {
+      stroke: #FFB000;
+      stroke-linecap: round;
+      stroke-dasharray: 430;
+      stroke-dashoffset: 430
+    }
+
+    .card.vis .ring .p {
+      transition: stroke-dashoffset .9s ease-in-out;
+      stroke-dashoffset: 0
+    }
+
+    .ring .av {
+      position: absolute;
+      inset: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff8a5c, #ff5e8a);
+      filter: grayscale(1);
+      opacity: .45;
+      transition: filter .5s .9s, opacity .5s .9s;
+      overflow: hidden
+    }
+
+    .card.vis .ring .av {
+      filter: none;
+      opacity: 1
+    }
+
+    .av:after {
+      content: "";
+      position: absolute;
+      inset: -30% auto -30% 0;
+      width: 100%;
+      background: linear-gradient(90deg, transparent, #ffb80073, transparent);
+      transform: translateX(-160%) rotate(25deg)
+    }
+
+    .ring:hover .av:after {
+      transition: transform 1s ease-in-out;
+      transform: translateX(320%) rotate(25deg)
+    }
+
+    .ring .hr {
+      position: absolute;
+      right: -4px;
+      bottom: -4px;
+      font-size: 44px;
+      line-height: 1;
+      transform: scale(0);
+      transition: transform .5s 1.2s cubic-bezier(.3, 1.6, .5, 1)
+    }
+
+    .card.vis .ring .hr {
+      transform: scale(1)
+    }
+
+    .ring:hover .hr {
+      transform: scale(1.15) !important;
+      transition-delay: 0s
+    }
+
+    .list {
+      width: 100%;
+      display: grid;
+      gap: 10px
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f6f1e4;
+      border-radius: 18px;
+      padding: 10px 12px;
+      text-align: left;
+      opacity: 0;
+      transform: translateY(16px)
+    }
+
+    .card.vis .row {
+      animation: in .5s var(--ease) forwards
+    }
+
+    .card.vis .row:nth-child(2) {
+      animation-delay: .2s
+    }
+
+    .card.vis .row:nth-child(3) {
+      animation-delay: .4s
+    }
+
+    @keyframes in {
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .row i {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      flex: none
+    }
+
+    .row b {
+      display: block;
+      font-size: 14px;
+      line-height: 1.2
+    }
+
+    .row small {
+      font-size: 11px;
+      opacity: .55;
+      font-weight: 600
+    }
+
+    .row button {
+      margin-left: auto;
+      background: #FFB000;
+      border-radius: 99px;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 6px 12px;
+      transition: transform .2s var(--ease)
+    }
+
+    .row button:active {
+      transform: scale(.9)
+    }
+
+    .row button.ok {
+      background: #1a1200;
+      color: #fff
+    }
+
+    /* MARQUEE */
+    .marq {
+      margin-top: 120px;
+      overflow: hidden;
+      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)
+    }
+
+    .track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: mq 50s linear infinite
+    }
+
+    .marq:hover .track {
+      animation-play-state: paused
+    }
+
+    @keyframes mq {
+      to {
+        transform: translateX(calc(-50% - 8px))
+      }
+    }
+
+    .rv {
+      width: 300px;
+      flex: none;
+      background: #fff;
+      color: #1a1200;
+      border-radius: 26px;
+      padding: 22px;
+      box-shadow: 0 8px 30px rgb(var(--fg)/.08)
+    }
+
+    .rv .s {
+      color: #FFB000;
+      letter-spacing: 2px;
+      font-size: 14px
+    }
+
+    .rv h4 {
+      font-weight: 800;
+      margin: 6px 0 4px
+    }
+
+    .rv p {
+      font-size: 14px;
+      line-height: 1.5;
+      opacity: .75;
+      font-weight: 500
+    }
+
+    .rv.q {
+      background: #1a1200;
+      color: #fff
+    }
+
+    .rv.q h4 {
+      font-size: 1.3rem;
+      line-height: 1.25
+    }
+
+    .rv.q small {
+      opacity: .6;
+      font-weight: 700
+    }
+
+    /* SAFER */
+    .safer {
+      text-align: center;
+      padding-top: 140px
+    }
+
+    .safer h3 {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 10px;
+      font-size: clamp(28px, 4vw, 34px);
+      font-weight: 800
+    }
+
+    .safer h3 span {
+      color: #677789
+    }
+
+    .shield {
+      width: 34px;
+      height: 40px;
+      align-self: center;
+      transition: transform .5s var(--ease)
+    }
+
+    .safer.vis .shield {
+      animation: bump .4s .12s ease-out
+    }
+
+    @keyframes bump {
+
+      0%,
+      100% {
+        transform: none
+      }
+
+      35% {
+        transform: translateY(3px)
+      }
+    }
+
+    .safer ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 10px
+    }
+
+    .safer li {
+      background: #fff;
+      color: #1a1200;
+      border-radius: 24px;
+      padding: 22px 24px;
+      max-width: 290px;
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 1.35;
+      box-shadow: 0 8px 30px rgb(var(--fg)/.08)
+    }
+
+    .story {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      margin: 96px auto 0;
+      max-width: 880px;
+      padding: 24px;
+      width: 100%
+    }
+
+    .story .pol {
+      position: relative;
+      width: 104px;
+      height: 92px;
+      flex: none
+    }
+
+    .story .pol i {
+      position: absolute;
+      width: 62px;
+      height: 62px;
+      background-color: #fff;
+      background-size: cover;
+      background-position: center;
+      border: 4px solid #fff;
+      box-sizing: border-box;
+      border-radius: 10px;
+      box-shadow: 0 3px 12px #0000001a;
+      transition: transform .3s
+    }
+
+    .story .pol i:first-child {
+      left: 0;
+      top: 0;
+      transform: rotate(-8deg)
+    }
+
+    .story .pol i:last-child {
+      right: 0;
+      bottom: 0;
+      transform: rotate(8deg)
+    }
+
+    .story:hover .pol i:first-child {
+      transform: rotate(-15deg)
+    }
+
+    .story:hover .pol i:last-child {
+      transform: rotate(14deg)
+    }
+
+    .story p {
+      font-weight: 800;
+      font-size: 19px;
+      line-height: 1.3
+    }
+
+    .story p+p {
+      opacity: .4;
+      margin-top: 8px;
+      transition: color .3s, opacity .3s
+    }
+
+    .story:hover p+p {
+      color: var(--gold);
+      opacity: 1
+    }
+
+    dialog {
+      border: 0;
+      border-radius: 32px;
+      padding: 36px;
+      max-width: 520px;
+      width: calc(100% - 32px);
+      background: rgb(var(--bg));
+      color: rgb(var(--fg));
+      margin: auto
+    }
+
+    dialog::backdrop {
+      background: #0006;
+      backdrop-filter: blur(8px)
+    }
+
+    dialog[open] {
+      animation: dpop .35s var(--ease)
+    }
+
+    @keyframes dpop {
+      from {
+        transform: scale(.8);
+        opacity: 0
+      }
+    }
+
+    dialog h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 12px
+    }
+
+    dialog p {
+      line-height: 1.65;
+      opacity: .8;
+      margin-bottom: 20px
+    }
+
+
+    @media(prefers-reduced-motion:reduce) {
+      * {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important
+      }
+
+      html {
+        scroll-behavior: auto
+      }
+
+      .track {
+        animation: none
+      }
     }
   </style>
-  <link rel="icon" href="https://locket-wan.top/snowlocket.png">
 </head>
 
 <body>
-  <div class="drive-header">
-    <img src="https://locket-wan.top/snowlocket.png" alt="Drive" style="width:32px;height:32px;margin-right:13px;">
-    <span class="header-title">Tải app Locket Wan cho android</span>
-  </div>
+  <header id="hd">
+    <div class="in"><a class="logo" href="#top"><img src="favicon.png" alt="Locket Wan">Locket Wan</a><a class="btn"
+        href="Download.html">Tải app</a></div>
+  </header>
 
+  <main id="top">
+    <section class="hero" id="hero">
+      <div class="fl-layer" id="fl" aria-hidden="true"></div>
+      <h1 class="sr">Best friends first</h1>
+      <div class="stamp" id="stamp" aria-hidden="true">
+        <div><b>Best</b><b>friends</b><b>first</b></div>
+      </div>
+      <div class="grp-o">
+        <div class="grp" id="grp">
+          <div class="pv">
+            <div class="ph2">
+              <div class="pb">
+                <div class="sb" style="padding:6cqw 7cqw 0"><img src="assets/index/status-bar.svg" alt="status"
+                    style="width:100%;height:auto;filter:invert(1)"></div>
+                <div class="hg" id="hg"></div>
+              </div>
+            </div>
+          </div>
+          <div class="qr"><a href="Download.html" aria-label="Tải Locket Wan"><img src="assets/index/qr-hero.svg"
+                alt="QR Code"
+                style="width:100%;height:auto;display:block;border-radius:1%;box-shadow:0 16px 50px #0000002e"></a>
+            <div class="tip">Quét mã bằng điện thoại<br>để tải Locket Wan</div>
+          </div>
+        </div>
+      </div>
+      <div class="tb" id="tb">
+        <div class="wmk">Locket Wan</div>
+        <p>App mod dành cho android <br class="brm">luôn update liên tục<br class="brm">caption đa dạng...</p>
+        <a class="btn get" href="Download.html" style="background:rgb(var(--accent));color:#1a1200">Tải
+          Locket Wan</a>
+        <button class="chev" id="chev" aria-label="Cuộn xuống"><svg viewBox="0 0 46 16" fill="currentColor">
+            <path d="M2 2l21 12L44 2" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg></button>
+      </div>
+    </section>
 
-  <div class="main-content">
-    <div class="breadcrumbs" id="breadcrumbs"></div>
-    <div class="install-guide">
-      <div class="guide-header" onclick="toggleGuide()">
-        <a href="./huong-dan.html" class="mdi mdi-information-outline">Hướng dẫn cài đặt APK</a>
-        <span class="mdi" id="guideArrow"></span>
+    <section class="sec">
+      <div class="wrap">
+        <div class="demo" id="demo">
+          <div class="demo-l">
+            <div class="demo-box">
+              <div class="car" id="car" tabindex="0" role="region" aria-roledescription="carousel"
+                aria-label="Ảnh minh họa, kéo để xem thêm">
+                <div class="ctrack" id="ctrack"></div>
+              </div>
+              <button class="cnav l" id="cprev" aria-label="Ảnh trước">‹</button>
+              <button class="cnav r" id="cnext" aria-label="Ảnh sau">›</button>
+            </div>
+            <div class="demo-dots" id="dots"></div>
+          </div>
+        </div>
+
+        <div class="cards">
+          <div class="card obs">
+            <div class="ico">🌈</div>
+            <div>
+              <h3>Caption đa sắc màu</h3>
+              <p>Caption màu sắc khác nhau theo sở thích người dùng</p>
+            </div>
+          </div>
+          <div class="card obs">
+            <div class="ico">📜</div>
+            <div>
+              <h3>Xem lại Lịch sử đã đăng</h3>
+              <p>Ai đã xem bài viết</p>
+            </div>
+          </div>
+          <div class="card obs">
+            <div class="ico">🔥</div>
+            <div>
+              <h3>Giữ chuỗi Streak</h3>
+              <p>Khôi phục chuỗi</p>
+            </div>
+          </div>
+          <div class="card obs">
+            <div class="ico">📶</div>
+            <div>
+              <h3>Chế độ Ngoại tuyến</h3>
+              <p>Tự tải lên khi có mạng</p>
+            </div>
+          </div>
+          <div class="card obs">
+            <div class="ico">💬</div>
+            <div>
+              <h3>Nhắn tin tức thời</h3>
+            </div>
+          </div>
+          <div class="card obs">
+            <div class="ico">📤</div>
+            <div>
+              <h3>Up ảnh & Video</h3>
+              <p>Upload ảnh, video không giới hạn</p>
+            </div>
+          </div>
+          <div class="card obs">
+            <div class="ico">🎨</div>
+            <div>
+              <h3>Giao diện tùy biến</h3>
+              <p>Đổi theme dễ dàng</p>
+            </div>
+          </div>
+          <div class="card obs">
+            <div class="ico">📅</div>
+            <div>
+              <h3>Tính năng lịch giống iOS</h3>
+            </div>
+          </div>
+          <div class="card obs">
+            <div class="ico">🖼️</div>
+            <div>
+              <h3>Tùy chỉnh khung widget (beta)</h3>
+            </div>
+          </div>
+          <div class="card obs">
+            <div class="ico">👥</div>
+            <div>
+              <h3>Tính năng kết bạn</h3>
+              <p>Tìm kiếm bạn bè, kết bạn, kết bạn với celeb</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-    </div>
-    <div class="install-guide">
-      <div class="guide-header" onclick="toggleGuide()">
-        <a href="https://locket-wan.top/download-apk" class="mdi mdi-information-outline">Xem ảnh của app</a>
-        <span class="mdi" id="guideArrow"></span>
+      <div class="marq" aria-label="Cảm nhận từ người dùng">
+        <div class="track" id="track"></div>
       </div>
 
-    </div>
-
-
-    <!-- Desktop File List -->
-    <table class="file-list" id="fileTable">
-      <thead>
-        <tr>
-          <th class="col-name">Tên</th>
-          <th class="col-time">Ngày cập nhật</th>
-          <th class="col-device">Thiết bị</th>
-          <th class="col-size">Dung lượng</th>
-          <th class="col-action">Tác vụ</th>
-        </tr>
-      </thead>
-      <tbody id="fileListBody"></tbody>
-    </table>
-
-    <!-- Mobile Filter Tabs -->
-    <div class="mobile-filter-bar" id="mobileFilterBar"></div>
-
-    <!-- Mobile File List -->
-    <div class="mobile-file-list" id="mobileFileList"></div>
-
-    <div class="empty-note" id="emptyNote" style="display: none;">
-      <div style="margin-bottom: 16px;">
-        <span class="mdi mdi-folder-outline" style="font-size: 48px; color: #dadce0;"></span>
+      <div class="wrap safer obs" id="safer">
+        <h3><svg class="shield" viewBox="0 0 34 40" fill="none" stroke="#677789" stroke-width="3.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 3 4 8v10c0 9 6 16 13 19 7-3 13-10 13-19V8z" />
+            <path d="m11 20 4 4 8-9" />
+          </svg><span>An toàn</span> cho người dùng</h3>
+        <ul>
+          <li>App không lưu bất kì dữ liệu nhảy cảm như mật khẩu người dùng</li>
+        </ul>
+        <button class="story" id="storyBtn"><span class="pol" aria-hidden="true"><i
+              style="background-image:url('assets/index/photos/p1.jpg')"></i><i
+              style="background-image:url('assets/index/photos/p2.jpg')"></i></span><span>
+            <p>Bạn có biết Locket Wan bắt đầu từ ....?</p>
+            <p>Đọc câu chuyện →</p>
+          </span></button>
       </div>
-      Chưa có tệp hay thư mục nào
-    </div>
-  </div>
+      </div>
+    </section>
 
-  <footer class="site-footer">
-    <div class="footer-title">
-      Trang chủ chính thức
-      <a href="https://locket-wan.top" class="brand-link">Locket Wan</a>
-    </div>
+    <section class="foot" id="tai">
+      <a class="btn" href="Download.html" style="background:rgb(var(--accent));color:#1a1200">Tải cho
+        Android</a>
+      <div class="wm" aria-hidden="true">Locket Wan</div>
+      <nav class="links">
+        <a href="About.html#gioi-thieu">Giới thiệu</a>
+        <a href="About.html#chinh-sach">Chính sách bảo mật</a>
+        <a href="About.html#faq">Điều khoản</a>
+        <a href="About.html#faq">Trung tâm trợ giúp</a>
+        <a href="About.html#lien-he">Liên hệ</a>
+      </nav>
+    </section>
+  </main>
 
-    <div>
-      © 2026 Locket Wan. All rights reserved.
-    </div>
-
-    <div style="margin-top:6px;">
-      Phát triển & vận hành bởi Quang
-    </div>
-  </footer>
+  <dialog id="dlg">
+    <h3>Câu chuyện của Locket Wan</h3>
+    <p>Locket Wan là 1 phiên bản mod dựa trên Locket ios nhằm tới ưu cho người dùng android. Đem lại trải nhiệm mượt mà,
+      update
+      liên
+      tục cho người dùng mà locket gốc android không có</p><button class="btn" id="dclose">Đóng</button>
+  </dialog>
 
   <script>
-    let currentFolderId = null;
-    let breadcrumbs = [];
-    let folderNameMap = {};
-    let allFiles = [];         // cache toàn bộ files
-    let activeFilter = 'all'; // filter đang chọn
+    const RM = matchMedia('(prefers-reduced-motion:reduce)').matches;
+    const $ = s => document.querySelector(s), wait = ms => new Promise(r => setTimeout(r, ms));
+    const PH = ['p1', 'p2', 'p3'], NAMES = ['Lan', 'Minh', 'Hà'];
 
-    // ==== Filter definitions ====
-    const FILTERS = [
-      { key: 'all', label: 'Tất cả', icon: 'mdi-view-grid', match: () => true },
-      { key: 'folder', label: 'Thư mục', icon: 'mdi-folder', match: f => f.isFolder },
-      { key: 'apk', label: 'APK', icon: 'mdi-android', match: f => ext(f) === 'apk' },
-      { key: 'image', label: 'Ảnh', icon: 'mdi-file-image', match: f => ['png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp', 'svg'].includes(ext(f)) },
-      { key: 'video', label: 'Video', icon: 'mdi-file-video', match: f => ['mp4', 'mov', 'avi', 'mkv', 'webm'].includes(ext(f)) },
-      { key: 'audio', label: 'Âm nhạc', icon: 'mdi-file-music', match: f => ['mp3', 'wav', 'flac', 'ogg', 'aac'].includes(ext(f)) },
-      { key: 'doc', label: 'Tài liệu', icon: 'mdi-file-document', match: f => ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'csv'].includes(ext(f)) },
-      { key: 'archive', label: 'Nén', icon: 'mdi-folder-zip', match: f => ['zip', 'rar', '7z', 'tar', 'gz'].includes(ext(f)) },
-      { key: 'code', label: 'Code', icon: 'mdi-code-braces', match: f => ['js', 'ts', 'py', 'php', 'cs', 'java', 'html', 'css', 'json', 'xml', 'sh', 'cpp', 'c', 'go', 'rs'].includes(ext(f)) },
-      { key: 'exe', label: 'Exe/App', icon: 'mdi-application', match: f => ['exe', 'msi', 'dmg', 'deb', 'rpm'].includes(ext(f)) },
-    ];
-    // const API_BASE = "https://tamko.shopacc17.site";
-    const API_BASE = "";
-
-    function ext(f) {
-      return (f.name || '').split('.').pop().toLowerCase();
+    /* home screen builder */
+    function buildHome(el, { widget = true, minis = 0 } = {}) {
+      el.innerHTML = (widget ? `<div class="wgt">${PH.map((p, i) => `<div class="ph ${p}${i ? '' : ' on'}"></div>`).join('')}<div class="who"><i></i><span>${NAMES[0]}</span></div></div>` : '')
+        + '<div class="ic"></div>'.repeat(widget ? 4 : 0)
+        + (widget ? '<div class="wl">Locket Wan</div>' : '')
+        + Array.from({ length: minis }, (_, i) => `<div class="mini ${PH[i % 3]}"></div>`).join('')
+        + '<div class="ic"></div>'.repeat(8);
+    }
+    function cycle(el, i) { const p = el.querySelectorAll('.ph'); if (!p.length) return; p.forEach((x, k) => x.classList.toggle('on', k === i % 3)); const n = el.querySelector('.who span'); if (n) n.textContent = NAMES[i % 3] }
+    function burst(scr, set) {
+      const e = [['😍', '💛'], ['🔥', '💯'], ['🌊', '☀️', '🩵']][set % 3];
+      for (let i = 0; i < 8; i++) { const s = document.createElement('span'); s.className = 'fl'; s.textContent = e[i % e.length]; s.style.left = (10 + Math.random() * 75) + '%'; s.style.fontSize = (22 + Math.random() * 8) + 'px'; s.style.animationDelay = (i * .1) + 's'; scr.appendChild(s); setTimeout(() => s.remove(), 2800) }
     }
 
-    // ==== Render filter chips ====
-    function renderFilterBar(files) {
-      const bar = document.getElementById('mobileFilterBar');
-      if (!bar) return;
-      bar.innerHTML = FILTERS.map(filter => {
-        const count = filter.key === 'all' ? files.length : files.filter(filter.match).length;
-        if (count === 0 && filter.key !== 'all') return ''; // ẩn filter không có file
-        return `
-          <div class="filter-chip ${activeFilter === filter.key ? 'active' : ''}"
-               onclick="setFilter('${filter.key}')">
-            <span class="mdi ${filter.icon}"></span>
-            ${filter.label}
-            <span class="chip-count">${count}</span>
-          </div>
-        `;
-      }).join('');
-    }
+    /* ===== HERO ===== */
+    const G = ['linear-gradient(135deg,#ff8a5c,#ff5e8a)', 'linear-gradient(135deg,#4fd1c5,#3b82f6)', 'linear-gradient(135deg,#a78bfa,#f472b6)', 'linear-gradient(135deg,#fde68a,#fb923c)', 'linear-gradient(135deg,#86efac,#22d3ee)', 'linear-gradient(135deg,#93c5fd,#c4b5fd)', 'linear-gradient(135deg,#fca5a5,#fcd34d)', 'linear-gradient(135deg,#6ee7b7,#3b82f6)'];
+    const FB = [
+      { l: 24, t: 29, s: 13.5, de: .18, du: .75, dr: 6, dd: 7, img: 'assets/index/bubbles/michid.webp', br: 18 },
+      { l: 91, t: 26, s: 14.5, de: .04, du: .95, dr: 9, dd: 10, img: 'assets/index/bubbles/widget-1.webp', br: 18 },
+      { l: 12, t: 72, s: 17, de: .12, du: .7, dr: 8, dd: 6.5, img: 'assets/index/captions/good-morning.webp', br: 20 },
+      { l: 10, t: 45, s: 16, de: .26, du: .7, dr: 6, dd: 7.5, img: 'assets/index/stickers/bff.webp', c: 'bff show-mob' },
+      { l: 13.5, t: 22, s: 11.7, de: .1, du: .8, dr: 6, dd: 8, k: '💕', r: -6 },
+      { l: 20, t: 55, s: 14.3, de: 0, du: .9, dr: 7, dd: 9, img: 'assets/index/stickers/heart-flat.webp', r: -5 },
+      { l: 28, t: 54, s: 9.1, de: .22, du: .7, dr: 5, dd: 6.5, k: '❤️' },
+      { l: 23.5, t: 75, s: 10.4, de: .16, du: .75, dr: 6, dd: 7, k: '📣', r: 4 },
+      { l: 74.5, t: 19, s: 10.4, de: .08, du: .8, dr: 6, dd: 7.5, tag: ['I ♥ Locket Wan', '#fff', '#1a1200'], r: 7 },
+      { l: 72.5, t: 35, s: 10.4, de: .2, du: .75, dr: 5, dd: 8, tag: ['+ Thêm bạn', '#FFB000', '#1a1200'], r: -6, desk: 1 },
+      { l: 83, t: 46, s: 11.7, de: .14, du: .85, dr: 7, dd: 9, tile: '#FFB000', r: 14 },
+      { l: 95.5, t: 52, s: 10.4, de: .06, du: .8, dr: 6, dd: 7, k: '💛' },
+      { l: 88, t: 78, s: 14, de: .28, du: .75, dr: 7, dd: 8, img: 'assets/index/stickers/heart-flat.webp', r: -7, c: 'heart show-mob' }];
+    $('#fl').innerHTML = FB.map((b, i) => {
+      const w = b.s + 'vmin', r = `transform:rotate(${b.r || 0}deg)`; let c;
+      if (b.img) c = `<img src="${b.img}" style="width:${w};height:auto;${r};${b.br ? `border-radius:${b.br}%` : ''};filter:drop-shadow(0 12px 24px rgba(0,0,0,0.15))">`;
+      else if (b.k) c = `<div class="stk" style="font-size:${b.s * .85}vmin;${r}">${b.k}</div>`;
+      else if (b.tag) c = `<div class="stk tag" style="font-size:${b.s * .42}vmin;background:${b.tag[1]};color:${b.tag[2]};${r}">${b.tag[0]}</div>`;
+      else if (b.tile) c = `<div class="stk tile" style="width:${w};background:${b.tile};${r}"><i></i></div>`;
+      else c = `<div class="photo" style="width:${w};background:${G[b.g]}"><div class="pf">${b.g < 3 ? '<i class="av"></i>' : ''}${b.cap ? `<span class="cap">${b.cap}</span>` : ''}</div></div>`;
+      return `<div class="fb${b.desk ? ' desk' : ''}${b.c ? ' ' + b.c : ''}" style="left:${b.l}%;top:${b.t}%"><div class="fe" data-i="${i}"><div class="fd" style="--dr:${b.dr}px;--dd:${b.dd}s"><div class="fp">${c}</div></div></div></div>`
+      mod
+    }).join('');
 
-    function setFilter(key) {
-      activeFilter = key;
-      renderFilterBar(allFiles);
-      renderMobileList(allFiles);
+    /* home screen in the hero phone */
+    const ICO = ['#ffb000', '#4fd1c5', '#a78bfa', '#ff8a5c', '#60a5fa', '#f472b6', '#34d399', '#fbbf24', '#f87171', '#818cf8', '#2dd4bf', '#fb7185'];
+    const RZ = [[0, 2], [0, 3], [1, 2], [1, 3], [2, 0], [2, 1], [2, 2], [2, 3], [3, 0], [3, 1], [3, 2], [3, 3]];
+    const hg = $('#hg');
+    hg.innerHTML = `<div class="hw" id="hw"><div class="hwi" style="background:url('assets/index/bubbles/widget-1.webp') center/cover"></div><div class="hl">Locket Wan</div></div>`
+      + ICO.map((c, i) => { const [e, t] = RZ[i], d = (Math.max(e > 1 ? e - 1 : 0, t > 1 ? t - 1 : 0) - 1 + (e + t) * .08) * 125; return `<div class="ic2" style="--dl:${d}ms"><b style="background:url('assets/index/appicons/icon-${i + 1}.png') center/cover"></b><s></s></div>` }).join('');
+    const CAPS = ['sáng tốt lành', 'hoàng hôn rồi', '', 'ở Sài Gòn', '', '', '', ''];
+    const BURST = [['☀️', '🤎', '😎'], ['🌅', '🧡', '😍'], ['✨', '💙', '😘'], ['🥂', '💜', '😍'], ['🌳', '💚', '👟'], ['🌊', '🩵', '😂'], ['🌼', '💛', '🥰'], ['⛵', '🤍', '😎']];
+    const RX = [{ x: 12, d: 0, s: 24 }, { x: 68, d: .1, s: 28 }, { x: 32, d: .25, s: 22 }, { x: 84, d: .4, s: 26 }, { x: 20, d: .5, s: 27 }, { x: 55, d: .65, s: 22 }, { x: 76, d: .8, s: 24 }, { x: 42, d: .95, s: 30 }];
+    let hs = 0, heroVis = true, cyc;
+    function hstep() {
+      hs++; const k = (hs - 1) % 8;
+      if (hs === 1) { $('#hw').classList.add('on'); hg.classList.add('dip') }
     }
+    function cycleHero(first) { clearTimeout(cyc); cyc = setTimeout(() => { if (heroVis && !document.hidden) hstep(); cycleHero(false) }, first ? 1200 : 3400) }
+    new IntersectionObserver(([e]) => { heroVis = e.isIntersecting }, { threshold: .2 }).observe($('#hero'));
 
-    // ==== Utils ====
-    function isMobile() {
-      return window.innerWidth <= 768;
+    /* scroll: nền trượt ra ngoài và mờ dần */
+    const fps = [...document.querySelectorAll('.fp')];
+    function par() {
+      const vw = innerWidth, vh = innerHeight, p = Math.min(scrollY / vh, 1);
+      fps.forEach((el, i) => { const b = FB[i]; el.style.transform = `translate(${p * (b.l - 50) * .15 * vw / 100}px,${p * (b.t - 50) * .15 * vh / 100}px)`; el.style.opacity = 1 - p })
     }
+    if (!RM) addEventListener('scroll', par, { passive: true });
+    $('#chev').onclick = () => { const d = $('#demo'); scrollTo({ top: Math.max(0, d.getBoundingClientRect().top + scrollY - 140), behavior: RM ? 'auto' : 'smooth' }) };
 
-    function formatSize(sizeValue) {
-      if (!sizeValue) return '';
-      // Nếu sizeValue là số (ví dụ: 101), mặc định thêm MB
-      if (typeof sizeValue === 'number') {
-        return sizeValue + ' MB';
+    /* intro: chữ đóng dấu -> nền bay ra -> điện thoại xoay vào */
+    function reveal() {
+      const hero = $('#hero'); hero.classList.add('go');
+      const o = { duration: 1000, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'both' };
+      $('#grp').animate([{ opacity: 0, transform: 'rotate(-10deg) scale(.45)', offset: 0 }, { opacity: 1, offset: .45 }, { opacity: 1, transform: 'none' }], o);
+      $('#tb').animate([{ opacity: 0 }, { opacity: 1 }], { duration: 800, delay: 450, fill: 'both' });
+      document.querySelectorAll('.fe').forEach(el => {
+        const b = FB[+el.dataset.i];
+        el.animate([{ opacity: 0, transform: `translate(${(50 - b.l) * .8}vw,${(50 - b.t) * .8}vh) scale(.1)` }, { opacity: 1, transform: 'none' }], { duration: b.du * 1000, delay: b.de * 1000, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'both' })
+      });
+      cycleHero(true);
+    }
+    (async () => {
+      const st = $('#stamp'), ls = [...st.querySelectorAll('b')];
+      if (RM) { st.style.display = 'none'; ls.forEach(b => b.style.opacity = 0); $('#grp').style.opacity = 1; $('#tb').style.opacity = 1; $('#hero').classList.add('go'); document.querySelectorAll('.fe').forEach(e => e.style.opacity = 1); hstep(); return }
+      const rot = [-3, 1, -2.5], xs = [-5, 0, 6];
+      await wait(350);
+      for (let i = 0; i < 3; i++) {
+        const sg = i % 2 ? 1 : -1;
+        ls[i].animate([{ opacity: 0, transform: `translateX(${xs[i]}%) rotate(${rot[i] + 14 * sg}deg) scale(0)` }, { opacity: 1, transform: `translateX(${xs[i]}%) rotate(${rot[i]}deg) scale(1)` }], { duration: 520, easing: 'cubic-bezier(.3,1.5,.5,1)', fill: 'both' });
+        await wait(450)
       }
-      // Nếu sizeValue đã là chuỗi (ví dụ: "101 MB"), trả về luôn
-      return sizeValue;
+      await wait(50); st.classList.add('out'); await wait(325); reveal();
+    })();
+
+    /* header + theme-color */
+    const hd = $('#hd'), tc = $('#tc');
+    addEventListener('scroll', () => { const y = scrollY; hd.classList.toggle('solid', y > 24); tc.content = y > 8 ? '#FFFBF1' : '#FFE091' }, { passive: true });
+
+    /* ===== FEATURE DEMO CAROUSEL ===== */
+    const AUTO = 5000;
+    const SLIDES = [
+      { src: 'assets/index/Screenshots', g: 'linear-gradient(135deg,#ff8a5c,#ff5e8a)', feat: 0, cap: 'Nhận ảnh từ bạn bè' },
+      { src: 'assets/index/Screenshots/p2.jpg', g: 'linear-gradient(135deg,#4fd1c5,#3b82f6)', feat: 0, cap: 'Ngay trên màn hình khóa' },
+      { src: 'assets/index/Screenshots/download_1790605164286.jpg', g: 'linear-gradient(135deg,#a78bfa,#f472b6)', feat: 1, cap: 'Tạo widget riêng' },
+      { src: 'assets/index/Screenshots/download_1790605303090.jpg', g: 'linear-gradient(135deg,#86efac,#22d3ee)', feat: 1, cap: 'Dành cho nhóm chat' },
+      { src: '', g: 'linear-gradient(135deg,#93c5fd,#c4b5fd)', feat: 2, cap: 'Trả lời nhanh chóng' }
+    ];
+
+    const car = $('#car'), ct = $('#ctrack'), featBtn = $('#feat'), dts = $('#dots');
+
+    ct.innerHTML = SLIDES.map(s => `<div class="cs"><div class="ci" style="background:${s.g}">${s.src ? `<img src="${s.src}" alt="${s.cap}" draggable="false">` : `<span>${s.cap}</span>`}</div></div>`).join('');
+    dts.innerHTML = SLIDES.map((s, i) => `<button class="dot" data-i="${i}" style="--d:${AUTO}ms" aria-label="Ảnh ${i + 1}"><i></i></button>`).join('');
+
+    let cur = 0, dx = 0, drag = false, x0 = 0, t0 = 0, timer, vis = false;
+
+    function paint(anim = true) {
+      ct.style.transition = drag ? 'none' : 'transform .6s var(--ease)';
+      ct.style.transform = `translateX(calc(${-cur * 100}% + ${dx}px))`;
+      if (!anim) return;
+      if (featBtn) {
+        const f = SLIDES[cur].feat;
+        [...featBtn.querySelectorAll('button')].forEach((b, i) => b.classList.toggle('on', i === f));
+      }
+      [...dts.children].forEach((b, i) => { b.classList.remove('on'); if (i === cur) { void b.offsetWidth; b.classList.add('on'); } });
     }
 
-    function showToast(msg, type = 'info') {
-      const container = document.getElementById('toast-container');
-      const toast = document.createElement('div');
-      toast.className = `toast toast-${type}`;
-      const icon = type === 'error' ? 'mdi-alert-circle-outline' : 'mdi-information-outline';
-      toast.innerHTML = `<span class="mdi ${icon}"></span> ${msg}`;
-      container.appendChild(toast);
-      setTimeout(() => {
-        toast.classList.add('fade-out');
-        setTimeout(() => toast.remove(), 600);
-      }, isMobile() ? 3000 : 2300);
+    function go(i) { cur = (i + SLIDES.length) % SLIDES.length; dx = 0; paint(); sched(); }
+    function sched() {
+      clearTimeout(timer);
+      if (RM || !vis || drag) return;
+      timer = setTimeout(() => { if (document.hidden) { sched(); return; } go(cur + 1); }, AUTO);
     }
 
-    // ==== File type icons ====
-    function getFileTypeIcon(file) {
-      if (file.isFolder) return '<span class="mdi mdi-folder file-icon" style="color:#ffb300"></span>';
-      const ext = (file.name || '').split('.').pop().toLowerCase();
-      const map = {
-        xml: ['mdi-xml', '#7d63e0'], py: ['mdi-language-python', '#306998'],
-        php: ['mdi-language-php', '#6e4fbb'], json: ['mdi-code-json', '#01a98e'],
-        exe: ['mdi-cog', '#455a64'], apk: ['mdi-android', '#43b755'],
-        cs: ['mdi-language-csharp', '#512bd4'], js: ['mdi-language-javascript', '#efd81d'],
-        html: ['mdi-language-html5', '#e34c26'], css: ['mdi-language-css3', '#2965f1'],
-        zip: ['mdi-folder-zip', '#607d8b'], rar: ['mdi-folder-zip', '#607d8b'],
-        txt: ['mdi-file-document-outline', '#222'], pdf: ['mdi-file-pdf-box', '#ea4335'],
-        doc: ['mdi-file-word-box', '#4285f4'], docx: ['mdi-file-word-box', '#4285f4'],
-        xls: ['mdi-file-excel-box', '#34a853'], xlsx: ['mdi-file-excel-box', '#34a853'],
-        png: ['mdi-file-image', '#fbc02d'], jpg: ['mdi-file-image', '#fbc02d'],
-        jpeg: ['mdi-file-image', '#fbc02d'], gif: ['mdi-file-image', '#fbc02d'],
-        mp3: ['mdi-file-music', '#9c27b0'], wav: ['mdi-file-music', '#9c27b0'],
-        mp4: ['mdi-file-video', '#00acc1'], mov: ['mdi-file-video', '#00acc1'],
-      };
-      const [icon, color] = map[ext] || ['mdi-file-outline', '#636c72'];
-      return `<span class="mdi ${icon} file-icon" style="color:${color}"></span>`;
+    /* vuốt */
+    car.addEventListener('pointerdown', e => {
+      if (e.target.closest('.cnav')) return;
+      drag = true; x0 = e.clientX; t0 = performance.now(); dx = 0;
+      clearTimeout(timer); car.setPointerCapture(e.pointerId); paint(false);
+    });
+    car.addEventListener('pointermove', e => {
+      if (!drag) return;
+      dx = e.clientX - x0;
+      if ((cur === 0 && dx > 0) || (cur === SLIDES.length - 1 && dx < 0)) dx *= .35;
+      paint(false);
+    });
+    function end() {
+      if (!drag) return;
+      drag = false;
+      const w = car.clientWidth, v = Math.abs(dx) / Math.max(1, performance.now() - t0);
+      const swipe = Math.abs(dx) > w * .15 || v > .5;
+      let n = cur;
+      if (swipe && dx < 0) n = Math.min(cur + 1, SLIDES.length - 1);
+      else if (swipe && dx > 0) n = Math.max(cur - 1, 0);
+      if (swipe && n === cur) n = dx < 0 ? 0 : SLIDES.length - 1;
+      dx = 0; go(n);
     }
+    car.addEventListener('pointerup', end);
+    car.addEventListener('pointercancel', end);
+    car.addEventListener('keydown', e => { if (e.key === 'ArrowRight') go(cur + 1); if (e.key === 'ArrowLeft') go(cur - 1); });
 
-    // ==== Breadcrumbs ====
-    function renderBreadcrumbs() {
-      const bc = document.getElementById('breadcrumbs');
-      bc.innerHTML = '';
-      breadcrumbs.forEach((b, i) => {
-        if (i > 0) bc.innerHTML += `<span class="mdi mdi-chevron-right"></span>`;
-        if (i === breadcrumbs.length - 1) {
-          bc.innerHTML += `<span class="breadcrumb-current">${b.name}</span>`;
-        } else {
-          bc.innerHTML += `<span onclick="openFolderByBreadcrumb(${i})">${b.name}</span>`;
-        }
+    $('#cprev').onclick = () => go(cur - 1);
+    $('#cnext').onclick = () => go(cur + 1);
+    dts.onclick = e => { const b = e.target.closest('[data-i]'); if (b) go(+b.dataset.i); };
+
+    if (featBtn) {
+      // Gắn sự kiện click cho list feature có sẵn trong giao diện (demo-r)
+      [...featBtn.querySelectorAll('button')].forEach((b, i) => {
+        b.onclick = () => go(SLIDES.findIndex(s => s.feat === i));
       });
     }
 
-    function openFolderByBreadcrumb(idx) {
-      breadcrumbs = breadcrumbs.slice(0, idx + 1);
-      openFolder(breadcrumbs[idx].id, false);
-    }
+    paint();
+    new IntersectionObserver(([e]) => { vis = e.isIntersecting; if (vis) { paint(); sched(); } else clearTimeout(timer); }, { threshold: .3 }).observe($('.demo-box'));
 
-    // ==== Render rows ====
-    function renderFileRow(f) {
-      return `
-        <tr>
-          <td class="col-name">
-            ${getFileTypeIcon(f)}
-            ${f.isFolder
-          ? `<span class="folder-link" onclick="openFolder('${f.id}')">${f.name}</span>`
-          : `<span class="file-link">${f.name}</span>`
-        }
-          </td>
-          <td class="col-time">${f.modifiedTime ? new Date(f.modifiedTime).toLocaleString('vi-VN') : ''}</td>
-          <td class="col-device">${f.note ? f.note : ''}</td>
-          <td class="col-size">${f.size ? formatSize(f.size) : ''}</td>
-          <td>
-            <div class="action-group" style="align-items: center;">
-              ${!f.isFolder && f.downloadCount > 0 ? `<span class="download-count-badge" title="Số lượt tải"><span class="mdi mdi-download-outline"></span> ${f.downloadCount}</span>` : ''}
-              ${!f.isFolder ? `
-                <a class="btn-action btn-download mdi mdi-download" title="Tải về" href="${f.downloadUrl}" download></a>
-              ` : ''}
-            </div>
-          </td>
-        </tr>
-      `;
-    }
+    /* card + section reveal */
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target) } }), { threshold: .6 });
+    document.querySelectorAll('.obs').forEach(x => io.observe(x));
+    document.querySelectorAll('.row button').forEach(b => b.onclick = () => { b.textContent = 'Đã thêm'; b.classList.add('ok') });
 
-    function renderMobileFileRow(f) {
-      const safeName = (f.name || '').replace(/[&<>"']/g, s =>
-        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[s])
-      );
-      const meta = f.isFolder ? 'Thư mục' : (f.size ? formatSize(f.size) : (f.mimeType || ''));
+    /* marquee */
+    const R = [['r', 'Ứng dụng hay nhất trên điện thoại', 'Mình mở Locket Wan nhiều hơn mọi app khác, và nó khiến mình thấy gần bạn bè hơn.'],
+    ['t', '@ban_than', 'widget locket wan là lý do duy nhất mình cười mỗi lần mở khóa máy'],
+    ['q', 'Ứng dụng của năm cho hội bạn thân', 'Báo chí công nghệ'],
+    ['t', '@nhom_chat', 'chủ nhật xem recap cùng nhóm chat >>> mọi mạng xã hội khác'],
+    ['r', 'Rất ấm áp', 'Cài cho nhóm gia đình, giờ sáng nào bà cũng gửi cả nhà một tấm ảnh.'],
+    ['q', 'Mẹo nhỏ giúp giữ liên lạc với người thân', 'Báo chí công nghệ']];
+    const card = ([k, a, b]) => k === 'q' ? `<div class="rv q"><h4>${a}</h4><small>${b}</small></div>` : k === 'r' ? `<div class="rv"><div class="s">★★★★★</div><h4>${a}</h4><p>${b}</p></div>` : `<div class="rv"><h4>${a}</h4><p>${b}</p></div>`;
+    $('#track').innerHTML = (R.map(card).join('')) + (R.map(card).join(''));
 
-      return `
-        <div class="mobile-file-item">
-          <div class="mobile-file-header">
-            ${getFileTypeIcon(f)}
-            <div class="mobile-file-name">${safeName}</div>
-          </div>
-          <div class="mobile-file-meta">
-            ${meta}
-            ${!f.isFolder && f.downloadCount > 0 ? `<span class="mobile-download-count"><span class="mdi mdi-download-outline"></span> ${f.downloadCount}</span>` : ''}
-          </div>
-          <div class="mobile-file-actions">
-            ${f.isFolder
-          ? `<button class="btn-icon" onclick="openFolder('${f.id}')"><span class="mdi mdi-folder-open"></span> Mở</button>`
-          : `<a class="btn-icon" href="${f.downloadUrl}" download><span class="mdi mdi-download"></span> Tải về</a>`
-        }
-          </div>
-        </div>
-      `;
-    }
-
-    // ==== Render mobile list with active filter ====
-    function renderMobileList(files) {
-      const mobileList = document.getElementById('mobileFileList');
-      const emptyNote = document.getElementById('emptyNote');
-      const filter = FILTERS.find(f => f.key === activeFilter);
-      const filtered = files.filter(filter.match);
-
-      if (filtered.length === 0) {
-        mobileList.innerHTML = '';
-        emptyNote.style.display = '';
-      } else {
-        mobileList.innerHTML = filtered.map(renderMobileFileRow).join('');
-        emptyNote.style.display = 'none';
-      }
-    }
-
-    // ==== Fetch & display files ====
-    async function fetchFiles(folderId) {
-      const tbody = document.getElementById('fileListBody');
-      const mobileList = document.getElementById('mobileFileList');
-      const emptyNote = document.getElementById('emptyNote');
-
-      tbody.innerHTML = `<tr><td colspan="4"><div class="loading"><div class="spinner"></div><div>Đang tải...</div></div></td></tr>`;
-      mobileList.innerHTML = `<div class="loading"><div class="spinner"></div><div>Đang tải...</div></div>`;
-      emptyNote.style.display = 'none';
-
-      try {
-        const url = "file.json";
-        const res = await fetch(url);
-        if (!res.ok) throw new Error('Lỗi tải danh sách');
-        const files = await res.json();
-
-        files.sort((a, b) => {
-          if (a.isFolder && !b.isFolder) return -1;
-          if (!a.isFolder && b.isFolder) return 1;
-          return a.name.localeCompare(b.name, 'vi');
-        });
-
-        allFiles = files;
-        activeFilter = 'all';
-
-        if (files.length === 0) {
-          tbody.innerHTML = '';
-          mobileList.innerHTML = '';
-          emptyNote.style.display = '';
-        } else {
-          tbody.innerHTML = files.map(renderFileRow).join('');
-          emptyNote.style.display = 'none';
-          renderFilterBar(files);
-          renderMobileList(files);
-        }
-      } catch (err) {
-        tbody.innerHTML = '';
-        mobileList.innerHTML = '';
-        showToast('Không thể tải danh sách file', 'error');
-        console.error(err);
-      }
-    }
-
-    // ==== Folder navigation ====
-    async function openFolder(folderId, pushBread = true) {
-      currentFolderId = folderId;
-
-      if (pushBread) {
-        let name = 'Thư mục';
-        if (folderId && folderNameMap[folderId]) {
-          name = folderNameMap[folderId];
-        }
-        breadcrumbs.push({ id: folderId, name });
-      }
-
-      renderBreadcrumbs();
-      await fetchFiles(folderId);
-    }
-
-    // Capture folder name when clicking into a folder
-    async function openFolderWithName(folderId, folderName) {
-      folderNameMap[folderId] = folderName;
-      await openFolder(folderId, true);
-    }
-
-    // Override renderFileRow to pass name
-    function renderFileRow(f) {
-      return `
-        <tr>
-          <td class="col-name">
-            ${getFileTypeIcon(f)}
-            ${f.isFolder
-          ? `<span class="folder-link" onclick="openFolderWithName('${f.id}', '${f.name.replace(/'/g, "\\'")}')">${f.name}</span>`
-          : `<span class="file-link">${f.name}</span>`
-        }
-          </td>
-          <td class="col-time">${f.modifiedTime ? new Date(f.modifiedTime).toLocaleString('vi-VN') : ''}</td>
-          <td class="col-device">${f.note ? f.note : ''}</td>
-          <td class="col-size">${f.size ? formatSize(f.size) : ''}</td>
-          <td>
-            <div class="action-group" style="align-items: center;">
-              ${!f.isFolder && f.downloadCount > 0 ? `<span class="download-count-badge" title="Số lượt tải"><span class="mdi mdi-download-outline"></span> ${f.downloadCount}</span>` : ''}
-              ${!f.isFolder ? `
-                <a class="btn-action btn-download mdi mdi-download" title="Tải về" href="${f.downloadUrl}" download></a>
-              ` : ''}
-            </div>
-          </td>
-        </tr>
-      `;
-    }
-
-    // Classify file type for icon bg color
-    function getFileClass(f) {
-      if (f.isFolder) return 'mfi-folder';
-      const e = ext(f);
-      if (e === 'apk') return 'mfi-apk';
-      if (['png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp', 'svg'].includes(e)) return 'mfi-image';
-      if (['mp4', 'mov', 'avi', 'mkv', 'webm'].includes(e)) return 'mfi-video';
-      if (['mp3', 'wav', 'flac', 'ogg', 'aac'].includes(e)) return 'mfi-audio';
-      if (['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'csv'].includes(e)) return 'mfi-doc';
-      if (['zip', 'rar', '7z', 'tar', 'gz'].includes(e)) return 'mfi-archive';
-      if (['js', 'ts', 'py', 'php', 'cs', 'java', 'html', 'css', 'json', 'xml', 'sh', 'cpp', 'c', 'go', 'rs'].includes(e)) return 'mfi-code';
-      if (['exe', 'msi', 'dmg', 'deb', 'rpm'].includes(e)) return 'mfi-exe';
-      return 'mfi-other';
-    }
-
-    function getFileLabel(f) {
-      if (f.isFolder) return 'Thư mục';
-      const e = ext(f);
-      const labels = {
-        apk: 'APK', exe: 'EXE', msi: 'MSI', dmg: 'DMG',
-        pdf: 'PDF', doc: 'Word', docx: 'Word', xls: 'Excel', xlsx: 'Excel',
-        ppt: 'PowerPoint', pptx: 'PowerPoint', txt: 'Văn bản', csv: 'CSV',
-        zip: 'ZIP', rar: 'RAR', '7z': '7-Zip', tar: 'TAR', gz: 'GZ',
-        mp3: 'MP3', wav: 'WAV', flac: 'FLAC', ogg: 'OGG', aac: 'AAC',
-        mp4: 'MP4', mov: 'MOV', avi: 'AVI', mkv: 'MKV',
-        png: 'PNG', jpg: 'JPG', jpeg: 'JPEG', gif: 'GIF', webp: 'WebP',
-        js: 'JavaScript', ts: 'TypeScript', py: 'Python', php: 'PHP',
-        html: 'HTML', css: 'CSS', json: 'JSON', xml: 'XML',
-        cs: 'C#', java: 'Java', cpp: 'C++', go: 'Go',
-      };
-      const typeLabel = labels[e] ? labels[e] : (e ? e.toUpperCase() : 'Tệp');
-      return f.size ? `${typeLabel} · ${formatSize(f.size)}` : typeLabel;
-    }
-
-    function renderMobileFileRow(f) {
-      const safeName = (f.name || '').replace(/[&<>"']/g, s =>
-        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[s])
-      );
-      const safeJsName = f.name.replace(/'/g, "\\'");
-      const iconClass = getFileClass(f);
-      const iconHtml = getFileTypeIcon(f);
-
-      // Kiểm tra nếu là folder thì hiện nút mũi tên, nếu là file thì hiện nút tải
-      const actionBtn = f.isFolder
-        ? `<button class="mfi-action" onclick="openFolderWithName('${f.id}','${safeJsName}')" title="Mở">
-             <span class="mdi mdi-chevron-right"></span>
-           </button>`
-        : `<a class="mfi-action" href="${f.downloadUrl}" download title="Tải về">
-             <span class="mdi mdi-download"></span>
-           </a>`;
-
-      return `
-        <div class="mobile-file-item">
-          <div class="mfi-icon ${iconClass}">${iconHtml}</div>
-          <div class="mfi-info">
-            <div class="mfi-name">${safeName}</div>
-            <div class="mfi-meta">
-              ${getFileLabel(f)}
-              ${!f.isFolder && f.downloadCount > 0 ? `<span class="mobile-download-count"><span class="mdi mdi-download-outline"></span> ${f.downloadCount}</span>` : ''}
-            </div>
-            ${f.note ? `<div class="mfi-note" style="font-size: 11px; color: #1a73e8; margin-top: 2px;">${f.note}</div>` : ''}
-          </div>
-          ${actionBtn}
-        </div>
-      `;
-    }
-
-    // ==== Init ====
-    window.onload = function () {
-      breadcrumbs = [{ id: null, name: 'Tệp apk của Locket Wan' }];
-      renderBreadcrumbs();
-      fetchFiles(null);
-    };
+    /* story dialog */
+    $('#storyBtn').onclick = () => $('#dlg').showModal(); $('#dclose').onclick = () => $('#dlg').close();
+    $('#dlg').onclick = e => { if (e.target === e.currentTarget) e.currentTarget.close() };
   </script>
 </body>
 
