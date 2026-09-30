@@ -2153,12 +2153,14 @@
     document.querySelectorAll('.row button').forEach(b => b.onclick = () => { b.textContent = 'Đã thêm'; b.classList.add('ok') });
 
     /* marquee */
-    const R = [['r', 'Ứng dụng hay nhất trên điện thoại', 'Mình mở Locket Wan nhiều hơn mọi app khác, và nó khiến mình thấy gần bạn bè hơn.'],
-    ['t', '@ban_than', 'widget locket wan là lý do duy nhất mình cười mỗi lần mở khóa máy'],
-    ['q', 'Ứng dụng của năm cho hội bạn thân', 'Báo chí công nghệ'],
-    ['t', '@nhom_chat', 'chủ nhật xem recap cùng nhóm chat >>> mọi mạng xã hội khác'],
-    ['r', 'Rất ấm áp', 'Cài cho nhóm gia đình, giờ sáng nào bà cũng gửi cả nhà một tấm ảnh.'],
-    ['q', 'Mẹo nhỏ giúp giữ liên lạc với người thân', 'Báo chí công nghệ']];
+    const R = [
+      ['r', 'Nhiều tính năng hay', 'Có thể up ảnh, ví dụ nhiều cap... quay video khá nét, nhiều caption ok.'],
+      ['t', '@nguoi_dung', 'Mượt, nhiều chức năng và khá dễ dùng. Khá hài lòng.'],
+      ['q', 'Trải nghiệm cao cấp', 'Các tính năng giống locket gold, được trải nghiệm những thứ locket gold có.'],
+      ['t', '@fan_locket', 'Up ảnh bên wan xem được người xem mà bên chính thức không thấy hiện.'],
+      ['r', 'Mong đợi bản cập nhật', 'Mong app cải thiện độ mượt mà giao diện, thêm tính năng đồng bộ thông báo thì quá tuyệt.'],
+      ['q', 'Góp ý từ người dùng', 'Giao diện giống app gốc là đẹp; hy vọng app khắc phục một số lỗi nhỏ khi tải vòng vòng để hoàn thiện hơn nữa.']
+    ];
     const card = ([k, a, b]) => k === 'q' ? `<div class="rv q"><h4>${a}</h4><small>${b}</small></div>` : k === 'r' ? `<div class="rv"><div class="s">★★★★★</div><h4>${a}</h4><p>${b}</p></div>` : `<div class="rv"><h4>${a}</h4><p>${b}</p></div>`;
     $('#track').innerHTML = (R.map(card).join('')) + (R.map(card).join(''));
 
