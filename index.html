@@ -668,11 +668,7 @@
       }
     }
 
-    @media(max-height:690px) {
-      .chev {
-        display: none
-      }
-    }
+
 
     .phone {
       position: relative;
@@ -851,7 +847,10 @@
 
     /* FEATURE DEMO */
     .sec {
-      padding: 120px 0 0
+      margin-top: -5px;
+      padding: 0;
+      position: relative;
+      z-index: 20;
     }
 
     .demo {
@@ -873,13 +872,14 @@
     /* ===== CAROUSEL ===== */
     .demo-l {
       width: 100%;
-      max-width: 460px;
+      max-width: 400px;
       flex: none
     }
 
     .demo-box {
       position: relative;
-      height: 480px;
+      aspect-ratio: 9/16;
+      width: 100%;
       border-radius: 44px;
       background: rgb(var(--fg)/.04);
       overflow: hidden;
@@ -910,14 +910,14 @@
       flex: none;
       width: 100%;
       height: 100%;
-      padding: 28px;
+      padding: 48px;
       display: grid;
       place-items: center
     }
 
     .ci {
       height: 100%;
-      aspect-ratio: 9/16;
+      aspect-ratio: 9/20;
       max-width: 100%;
       border-radius: 32px;
       overflow: hidden;
@@ -926,8 +926,7 @@
       color: #fff;
       font-weight: 800;
       text-align: center;
-      padding: 16px;
-      box-shadow: 0 16px 50px #0000002e
+      box-shadow: 0 16px 50px #0000002e;
     }
 
     .ci img {
@@ -980,6 +979,7 @@
       position: relative;
       height: 8px;
       width: 8px;
+      margin-bottom: 50px;
       border-radius: 99px;
       background: rgb(var(--fg)/.2);
       overflow: hidden;
@@ -1137,7 +1137,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 16px;
-      margin-top: 64px;
+      margin-top: 0px;
       position: relative;
       z-index: 1;
     }
@@ -1236,7 +1236,7 @@
       .cards {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
-        margin-top: 48px;
+        margin-top: -8px;
       }
 
       .card {
@@ -1798,8 +1798,6 @@
       <div class="tb" id="tb">
         <div class="wmk">Locket Wan</div>
         <p>App mod dành cho android <br class="brm">luôn update liên tục<br class="brm">caption đa dạng...</p>
-        <a class="btn get" href="Download.html" style="background:rgb(var(--accent));color:#1a1200">Tải
-          Locket Wan</a>
         <button class="chev" id="chev" aria-label="Cuộn xuống"><svg viewBox="0 0 46 16" fill="currentColor">
             <path d="M2 2l21 12L44 2" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"
               stroke-linejoin="round" />
@@ -1961,19 +1959,21 @@
     /* ===== HERO ===== */
     const G = ['linear-gradient(135deg,#ff8a5c,#ff5e8a)', 'linear-gradient(135deg,#4fd1c5,#3b82f6)', 'linear-gradient(135deg,#a78bfa,#f472b6)', 'linear-gradient(135deg,#fde68a,#fb923c)', 'linear-gradient(135deg,#86efac,#22d3ee)', 'linear-gradient(135deg,#93c5fd,#c4b5fd)', 'linear-gradient(135deg,#fca5a5,#fcd34d)', 'linear-gradient(135deg,#6ee7b7,#3b82f6)'];
     const FB = [
-      { l: 24, t: 29, s: 13.5, de: .18, du: .75, dr: 6, dd: 7, img: 'assets/index/bubbles/michid.webp', br: 18 },
-      { l: 91, t: 26, s: 14.5, de: .04, du: .95, dr: 9, dd: 10, img: 'assets/index/bubbles/widget-1.webp', br: 18 },
-      { l: 12, t: 72, s: 17, de: .12, du: .7, dr: 8, dd: 6.5, img: 'assets/index/captions/good-morning.webp', br: 20 },
-      { l: 10, t: 45, s: 16, de: .26, du: .7, dr: 6, dd: 7.5, img: 'assets/index/stickers/bff.webp', c: 'bff show-mob' },
-      { l: 13.5, t: 22, s: 11.7, de: .1, du: .8, dr: 6, dd: 8, k: '💕', r: -6 },
-      { l: 20, t: 55, s: 14.3, de: 0, du: .9, dr: 7, dd: 9, img: 'assets/index/stickers/heart-flat.webp', r: -5 },
-      { l: 28, t: 54, s: 9.1, de: .22, du: .7, dr: 5, dd: 6.5, k: '❤️' },
-      { l: 23.5, t: 75, s: 10.4, de: .16, du: .75, dr: 6, dd: 7, k: '📣', r: 4 },
-      { l: 74.5, t: 19, s: 10.4, de: .08, du: .8, dr: 6, dd: 7.5, tag: ['I ♥ Locket Wan', '#fff', '#1a1200'], r: 7 },
-      { l: 72.5, t: 35, s: 10.4, de: .2, du: .75, dr: 5, dd: 8, tag: ['+ Thêm bạn', '#FFB000', '#1a1200'], r: -6, desk: 1 },
-      { l: 83, t: 46, s: 11.7, de: .14, du: .85, dr: 7, dd: 9, tile: '#FFB000', r: 14 },
-      { l: 95.5, t: 52, s: 10.4, de: .06, du: .8, dr: 6, dd: 7, k: '💛' },
-      { l: 88, t: 78, s: 14, de: .28, du: .75, dr: 7, dd: 8, img: 'assets/index/stickers/heart-flat.webp', r: -7, c: 'heart show-mob' }];
+      { l: 21, t: 29, s: 13.5, de: .18, du: .75, dr: 6, dd: 7, img: '/assets/index/bubbles/michid.webp', br: 18 },
+      { l: 88, t: 26, s: 14.5, de: .04, du: .95, dr: 9, dd: 10, img: '/assets/index/bubbles/widget-1.webp', br: 18 },
+      { l: 9, t: 72, s: 17, de: .12, du: .7, dr: 8, dd: 6.5, img: '/assets/index/captions/good-morning.webp', br: 20 },
+      { l: 7, t: 45, s: 16, de: .26, du: .7, dr: 6, dd: 7.5, img: '/assets/index/stickers/bff.webp', c: 'bff show-mob' },
+      { l: 10.5, t: 22, s: 11.7, de: .1, du: .8, dr: 6, dd: 8, img: '/assets/index/stickers/hearts-duo.webp', r: -6 },
+      { l: 17, t: 55, s: 14.3, de: 0, du: .9, dr: 7, dd: 9, img: '/assets/index/stickers/heart-flat.webp', r: -5 },
+      { l: 26, t: 54, s: 9.1, de: .22, du: .7, dr: 5, dd: 6.5, img: '/assets/index/stickers/heart-3d.webp' },
+      { l: 20.5, t: 75, s: 10.4, de: .16, du: .75, dr: 6, dd: 7, img: '/assets/index/stickers/megaphone.webp', r: 4 },
+      { l: 71.5, t: 19, s: 10.4, de: .08, du: .8, dr: 6, dd: 7.5, tag: ['I ♥ Locket Wan', '#fff', '#1a1200'], r: 7 },
+      { l: 69.5, t: 35, s: 10.4, de: .2, du: .75, dr: 5, dd: 8, tag: ['+ Thêm bạn', '#FFB000', '#1a1200'], r: -6, desk: 1 },
+      { l: 80, t: 46, s: 11.7, de: .14, du: .85, dr: 7, dd: 9, img: '/assets/index/stickers/locket-tile.webp', r: 14 },
+      { l: 92.5, t: 52, s: 10.4, de: .06, du: .8, dr: 6, dd: 7, img: '/assets/index/stickers/heart-flat.webp' },
+      { l: 85, t: 78, s: 14, de: .28, du: .75, dr: 7, dd: 8, img: '/assets/index/stickers/locket-red.webp', r: -7, c: 'heart show-mob' },
+      { l: 75.5, t: 60, s: 10.4, de: .06, du: .8, dr: 6, dd: 7, img: '/assets/index/stickers/i-heart-locket.webp' },
+    ];
     $('#fl').innerHTML = FB.map((b, i) => {
       const w = b.s + 'vmin', r = `transform:rotate(${b.r || 0}deg)`; let c;
       if (b.img) c = `<img src="${b.img}" style="width:${w};height:auto;${r};${b.br ? `border-radius:${b.br}%` : ''};filter:drop-shadow(0 12px 24px rgba(0,0,0,0.15))">`;
@@ -2043,11 +2043,13 @@
     /* ===== FEATURE DEMO CAROUSEL ===== */
     const AUTO = 5000;
     const SLIDES = [
-      { src: 'assets/index/Screenshots', g: 'linear-gradient(135deg,#ff8a5c,#ff5e8a)', feat: 0, cap: 'Nhận ảnh từ bạn bè' },
-      { src: 'assets/index/Screenshots/p2.jpg', g: 'linear-gradient(135deg,#4fd1c5,#3b82f6)', feat: 0, cap: 'Ngay trên màn hình khóa' },
-      { src: 'assets/index/Screenshots/download_1790605164286.jpg', g: 'linear-gradient(135deg,#a78bfa,#f472b6)', feat: 1, cap: 'Tạo widget riêng' },
-      { src: 'assets/index/Screenshots/download_1790605303090.jpg', g: 'linear-gradient(135deg,#86efac,#22d3ee)', feat: 1, cap: 'Dành cho nhóm chat' },
-      { src: '', g: 'linear-gradient(135deg,#93c5fd,#c4b5fd)', feat: 2, cap: 'Trả lời nhanh chóng' }
+      { src: 'assets/index/Screenshots/Screenshot_2026-09-28-23-27-35-484_com.quang2k6.locketwan.jpg', g: '', feat: 0, cap: 'Nhận ảnh từ bạn bè' },
+      { src: 'assets/index/Screenshots/Screenshot_2026-09-28-23-27-39-972_com.quang2k6.locketwan.jpg', g: '', feat: 1, cap: 'Ngay trên màn hình khóa' },
+      { src: 'assets/index/Screenshots/Screenshot_2026-09-28-23-27-51-757_com.quang2k6.locketwan.jpg', g: '', feat: 2, cap: 'Tạo widget riêng' },
+      { src: 'assets/index/Screenshots/Screenshot_2026-09-28-23-27-57-451_com.quang2k6.locketwan.jpg', g: '', feat: 3, cap: 'Dành cho nhóm chat' },
+      { src: 'assets/index/Screenshots/Screenshot_2026-09-28-23-28-17-708_com.quang2k6.locketwan.jpg', g: '', feat: 4, cap: 'Trả lời nhanh chóng' },
+      { src: 'assets/index/Screenshots/Screenshot_2026-09-28-23-28-27-951_com.quang2k6.locketwan.jpg', g: '', feat: 5, cap: 'Bảo mật quyền riêng tư' },
+      { src: 'assets/index/Screenshots/Screenshot_2026-09-28-23-28-34-435_com.quang2k6.locketwan.jpg', g: '', feat: 6, cap: 'Giao diện mượt mà' }
     ];
 
     const car = $('#car'), ct = $('#ctrack'), featBtn = $('#feat'), dts = $('#dots');
